@@ -12,7 +12,9 @@ if (isset($_REQUEST['url']) && !empty($_REQUEST['url'])) {
 if (isset($_REQUEST['step'])) {
 	
 	/* clear any existing session data */
-	session_start();
+	if (session_status() === PHP_SESSION_NONE) {
+		session_start();
+	}
 	$_SESSION = array();
 	session_destroy();
 	session_start();

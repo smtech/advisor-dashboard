@@ -5,7 +5,7 @@
 </FilesMatch>
 
 # block access by file extension
-<FilesMatch "(\.sql|\.inc.php)$">
+<FilesMatch "(\.sql|\.inc\.php|\.cli\.php|\.sh)$">
 	Order allow,deny
 	Deny from all
 </FilesMatch>
