@@ -1,12 +1,12 @@
 <?php
 
-require_once('vendor/autoload.php');
+require_once(__DIR__ . '/vendor/autoload.php');
 
 define('SECRETS_FILE', __DIR__ . '/secrets.xml');
 define('SCHEMA_FILE', __DIR__ . '/admin/schema-app.sql');
 define('MYSQL_PREFIX', '');
 
-session_start();
+use Battis\AppMetadata as AppMetadata;
 
 /**
  * Test if the app is in the middle of launching
@@ -16,7 +16,8 @@ session_start();
  * @return boolean
  **/
 function midLaunch() {
-	return strpos($_SERVER['REQUEST_URI'], '/lti/launch.php') !== false;
+	global $metadata; // FIXME grown-ups don't program like this
+	return $metadata['APP_LAUNCH_URL'] === (($_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://') . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']);
 }
 
 /**
@@ -56,7 +57,7 @@ function initSecrets() {
  * @throws CanvasAPIviaLTI_Exception MYSQL_CONNECTION if a mysqli connection cannot be established
  **/
 function initMySql() {
-	global $secrets;	
+	global $secrets; // FIXME grown-ups don't program like this
 	if (!($secrets instanceof SimpleXMLElement)) {
 		$secrets = initSecrets();
 	}
@@ -80,13 +81,31 @@ function initMySql() {
 	return $sql;
 }
 
+/**
+ * Initialize AppMetadata
+ *
+ * @return \Battis\AppMetadata
+ **/
 function initAppMetadata() {
-	global $secrets;
-	global $sql;
+	global $secrets; // FIXME grown-ups don't program like this
+	global $sql; // FIXME grown-ups don't program like this
 	
 	$metadata = new AppMetadata($sql, (string) $secrets->app->id);
 	
 	return $metadata;
+}
+
+/**
+ * Preformat `var_dump()`
+ *
+ * @param mixed $var
+ *
+ * @return void
+ **/
+function html_var_dump($var) {
+	echo '<pre>';
+	var_dump($var);
+	echo '</pre>';
 }
 
 /*****************************************************************************
@@ -94,43 +113,66 @@ function initAppMetadata() {
  * The script begins here                                                    *
  *                                                                           *
  *****************************************************************************/
- 
+
 /* assume everything's going to be fine... */
 $ready = true;
 
-/* fire up the templating engine */
-$smarty = StMarksSmarty::getSmarty(true, __DIR__ . '/templates');
+/* preliminary interactive only initialization */
+if (php_sapi_name() != 'cli') {
+	session_start(); 
 
+	/* fire up the templating engine for interactive scripts */
+	$smarty = StMarksSmarty::getSmarty(true, __DIR__ . '/templates');
+}
+
+/* initialization that needs to happen for interactive and CLI scripts */
 try {
-
 	/* initialize global variables */
 	$secrets = initSecrets();
 	$sql = initMySql();
 	$metadata = initAppMetadata();
-		
-	if (isset($_SESSION['toolProvider'])) {
-		$toolProvider = $_SESSION['toolProvider'];
-	} else {
-		if (!midLaunch()) {
-			throw new CanvasAPIviaLTI_Exception(
-				'The LTI launch request is missing',
-				CanvasAPIviaLTI_Exception::LAUNCH_REQUEST
-			);
-		}
-	}
-	
 } catch (CanvasAPIviaLTI_Exception $e) {
-	$ready = false;
+	$smarty->addMessage(
+		'Initialization Failure',
+		$e->getMessage(),
+		NotificationMessage::ERROR
+	);
+	$smarty->display();
+	exit;
 }
 
-if ($ready) {
-	$smarty->addStylesheet($metadata['APP_URL'] . '/stylesheets/canvas-api-via-lti.css', 'starter-canvas-api-via-lti');
-	$smarty->addStylesheet($metadata['APP_URL'] . '/stylesheets/app.css');
-	
-	if (!midLaunch()) {
-		require_once('common-app.inc.php');
-		$smarty->assign('ltiUser', $toolProvider->user);
+/* interactive initialization only */
+if ($ready && php_sapi_name() != 'cli') {
+		
+	/* allow web apps to use common.inc.php without LTI authentication */
+	if (!defined('IGNORE_LTI')) {
+		
+		try {
+			if (midLaunch()) {
+				$ready = false;
+			} elseif (isset($_SESSION['toolProvider'])) {
+				$toolProvider = $_SESSION['toolProvider'];
+			} else {
+				throw new CanvasAPIviaLTI_Exception(
+					'The LTI launch request is missing',
+					CanvasAPIviaLTI_Exception::LAUNCH_REQUEST
+				);
+			}
+			
+		} catch (CanvasAPIviaLTI_Exception $e) {
+			$ready = false;
+		}
+	}
+
+	if ($ready) {
+		$smarty->addStylesheet($metadata['APP_URL'] . '/css/canvas-api-via-lti.css', 'starter-canvas-api-via-lti');
+		$smarty->addStylesheet($metadata['APP_URL'] . '/css/app.css');
+		
+		if (!midLaunch() || !defined('IGNORE_LTI')) {
+			require_once(__DIR__ . '/common-app.inc.php');
+		}
 	}
 }
+
 
 ?>
