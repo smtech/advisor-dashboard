@@ -28,7 +28,8 @@
 		"smtech/oauth-negotiator": "~1.0",
 		"battis/appmetadata": "~1.0",
 		"spvsoftwareproducts/LTI_Tool_Provider": "~2.5",
-		"pear/log": "~1.12"
+		"pear/log": "~1.12",
+		"battis/simplecache": "~1.0"
 	},
 	"autoload": {
 		"classmap": [""]
