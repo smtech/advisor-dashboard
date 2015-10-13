@@ -2,10 +2,9 @@
 
 require_once('common.inc.php');
 
-$cache = new \Battis\HierarchicalSimpleCache($sql, basename(__FILE__, '.php'));
 $cache->setLifetime(60*60); /* 1 hour */
 
-$cache->pushKey($_SESSION['courseId']);
+$cache->pushKey(basename(__FILE__, '.php'));
 
 $observers = $cache->getCache('observers');
 if ($observers === false) {
