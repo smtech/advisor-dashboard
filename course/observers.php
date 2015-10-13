@@ -5,14 +5,13 @@ require_once('common.inc.php');
 $cache = new \Battis\HierarchicalSimpleCache($sql, basename(__FILE__, '.php'));
 $cache->setLifetime(60*60); /* 1 hour */
 
-$courseId = $_SESSION['toolProvider']->user->getResourceLink()->settings['custom_canvas_course_id'];
-$cache->pushKey($courseId);
+$cache->pushKey($_SESSION['courseId']);
 
 $observers = $cache->getCache('observers');
 if ($observers === false) {
 	$observers = array();
 	$enrollments = $api->get(
-		"courses/$courseId/enrollments",
+		"courses/{$_SESSION['courseId']}/enrollments",
 		array(
 			'role[]' => 'ObserverEnrollment'
 		)
