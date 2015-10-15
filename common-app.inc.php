@@ -1,6 +1,29 @@
 <?php
 
 /**
+ * Get a listing of all accounts organized for presentation in a select picker
+ *
+ * @return array
+ **/
+function getAccountList() {
+	global $sql; // FIXME grown-ups don't code like this
+	global $api; // FIXME grown-ups don't code like this
+		
+	$cache = new \Battis\HierarchicalSimpleCache($sql, basename(__FILE__, '.php'));
+	
+	$accounts = $cache->getCache('accounts');
+	if ($accounts === false) {
+		$accountsResponse = $api->get('accounts/1/sub_accounts', array('recursive' => 'true'));
+		$accounts = array();
+		foreach ($accountsResponse as $account) {
+			$accounts[$account['id']] = $account;
+		}
+		$cache->setCache('accounts', $accounts, 7 * 24 * 60 * 60);
+	}
+	return $accounts;
+}
+
+/**
  * Get a listing of all terms organized for presentation in a select picker
  *
  * @return array
@@ -19,7 +42,11 @@ function getTermList() {
 				'workflow_state' => 'active'
 			)
 		);
-		$terms = $_terms['enrollment_terms'];
+		$termsResponse = $_terms['enrollment_terms'];
+		$terms = array();
+		foreach ($termsResponse as $term) {
+			$terms[$term['id']] = $term;
+		}
 		$cache->setCache('terms', $terms, 7 * 24 * 60 * 60);
 	}
 	return $terms;

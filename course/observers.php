@@ -12,7 +12,7 @@ if ($observers === false) {
 	$enrollments = $api->get(
 		"courses/{$_SESSION['courseId']}/enrollments",
 		array(
-			'role[]' => 'ObserverEnrollment'
+			'role[]' => 'ObserverEnrollment' // FIXME this shouldn't requrie the faux-array
 		)
 	);
 	foreach ($enrollments as $enrollment) {

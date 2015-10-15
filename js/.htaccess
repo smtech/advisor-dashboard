@@ -1,0 +1,4 @@
+<Files Chart.min.js>
+	Order allow,deny
+	Allow from all
+</Files>
