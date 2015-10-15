@@ -1,7 +1,6 @@
 {block name="navigation-menu"}
-
-<a target="_parent" href="{$facultyJournal}" class="btn btn-danger">Faculty Journal</a>
-
-<a class="pull-right" href="relative-grades.php">&pi;</a>
-
+<ul class="nav navbar-nav">
+	<li><a href="relative-grades.php">Relative Grades</a></li>
+	<li><a target="_parent" href="{$facultyJournal}">Faculty Journal</a></li>
+</ul>
 {/block}
