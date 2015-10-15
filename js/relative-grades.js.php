@@ -3,6 +3,22 @@
 define('IGNORE_LTI', true);
 require_once(__DIR__ . '/../course/common.inc.php');
 
+// http://paletton.com/#uid=33s0u0koA++cP+Mj9+Yus+WMOZA
+define('TRANSPARENT', 'rgba(0, 0, 0, 0)');
+define('HIGH_STROKE', '#6ed0ff'); // less light blue
+define('HIGH_FILL', TRANSPARENT);
+define('THIRD_QUARTILE_STROKE', TRANSPARENT);
+define('THIRD_QUARTILE_FILL', '#9ddffe'); // light blue
+define('MEDIAN_STROKE', '#fff'); // white
+define('MEDIAN_FILL', THIRD_QUARTILE_FILL);
+define('FIRST_QUARTILE_STROKE', TRANSPARENT);
+define('FIRST_QUARTILE_FILL', '#ffe399');  // light yellow
+define('LOW_STROKE', '#ff3f0c'); // medium red
+define('LOW_FILL', '#fff'); // white
+define('SCORE_STROKE', '#000'); // black
+define('SCORE_FILL', TRANSPARENT);
+
+
 $points = 0;
 function normalize($numerator, $denominator = false) {
 	global $points;
@@ -39,7 +55,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
 		$third_quartiles = array();
 		$scores = array();
 		foreach($analytic as $data) {
-			if ($data['points_possible'] > 0) {
+			if ($data['points_possible'] > 0 && $data['max_score'] > 0) {
 				$labels[] = ''; // htmlentities($data['title']);
 				$max_scores[] = normalize($data['max_score'], $data['points_possible']);
 				$min_scores[] = normalize($data['min_score']);
@@ -56,38 +72,38 @@ Chart.defaults.global.scaleBeginAtZero = true;
 		datasets: [
 			{
 				label: "High Score",
-				fillColor: "rgba(0, 0, 0, 0)",
-				strokeColor: "rgba(0, 150, 225, 0.1)",
+				fillColor: "<?= HIGH_FILL ?>",
+				strokeColor: "<?= HIGH_STROKE ?>",
 				data: [<?= implode(', ', $max_scores) ?>]
 			},
 			{
 				label: "Third Quartile",
-				fillColor: "rgba(0, 150, 225, 0.2)",
-				strokeColor: "rgba(0, 0, 0, 0)",
+				fillColor: "<?= THIRD_QUARTILE_FILL ?>",
+				strokeColor: "<?= THIRD_QUARTILE_STROKE ?>",
 				data: [<?= implode(', ', $third_quartiles) ?>]
 			},
 			{
 				label: "Median",
-				fillColor: "rgba(0, 0, 0, 0)",
-				strokeColor: "rgba(0, 150, 225, 0.5)",
+				fillColor: "<?= MEDIAN_FILL ?>",
+				strokeColor: "<?= MEDIAN_STROKE ?>",
 				data: [<?= implode(', ', $medians) ?>]
 			},
 			{
 				label: "First Quartile",
-				fillColor: "rgba(255, 255, 255, 1)",
-				strokeColor: "rgba(0, 0, 0, 0)",
+				fillColor: "<?= FIRST_QUARTILE_FILL ?>",
+				strokeColor: "<?= FIRST_QUARTILE_STROKE ?>",
 				data: [<?= implode(', ', $first_quartiles) ?>]
 			},
 			{
 				label: "Low Score",
-				fillColor: "rgba(0, 0, 0, 0)",
-				strokeColor: "rgba(0, 150, 225, 0.1)",
+				fillColor: "<?= LOW_FILL ?>",
+				strokeColor: "<?= LOW_STROKE ?>",
 				data: [<?= implode(', ', $min_scores) ?>]
 			},
 			{
 				label: "Score",
-				fillColor: "rgba(0, 0, 0, 0)",
-				strokeColor: "rgba(0, 0, 0, 1)",
+				fillColor: "<?= SCORE_FILL ?>",
+				strokeColor: "<?= SCORE_STROKE ?>",
 				data: [<?= implode(', ', $scores) ?>]
 			}
 		]
