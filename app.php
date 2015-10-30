@@ -8,7 +8,7 @@ if (!empty($_SESSION['toolProvider']->user->getResourceLink()->settings['custom_
 	exit;
 } else {
 	$_SESSION['courseId'] = $_SESSION['toolProvider']->user->getResourceLink()->settings['custom_canvas_course_id'];
-	header('Location: course/observers.php');
+	header('Location: course/');
 }
 
 

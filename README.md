@@ -1,35 +1,40 @@
-# Canvas API via LTI (Starter)
+# Advisor Dashboard LTI
 
-This is a starter template for projects that want to…
+This LTI is explicitly inspired by the University of Michigan presentation at InstructureCon 2015:
 
-  1. Authenticate users' identities
-  2. Access the Canvas APIs (either to provide information to the users or _as_ the users)
-  3. Embed the presentation layer of the project back into Canvas
+[![Using Canvas APIs to Serve a Campus Early Warning System](http://img.youtube.com/vi/uqJ2hwsB92M/0.jpg)](https://www.youtube.com/watch?v=uqJ2hwsB92M)
 
-This came about as a result of Hack Night at InstructureCon 2015, when it became clear to me that desire to both authenticate users _and_ access the API using OAuth-provided tokens was more than could be done through simple OAuth authentication. (Well, it _can_ be done, but it generates two OAuth tokens in the user's account and causes them to think that they are being logged in twice: once to authenticate their identity (which can be persistent -- "check to remember this login") and once to generate an API key. This seemed confusing, at best.)
+The reason that St. Mark's chose to use Canvas was to reduce the friction in communication about student progress and feedback, specifically with the trio of the student, the teacher and the student's advisor in mind. We want the advisor to be able to provide the student with the best possible counsel and advice, with minimal overhead to the teacher but _with_ high coordination with the teacher.
 
-### Usage
+### The Setup
 
-1. Start by [forking this repository](https://help.github.com/articles/fork-a-repo/).
-2. Load your fork on to your favorite LAMP server (ideally including SSL-authentication -- Canvas plays nicer that way, and it's just plain more secure).
-2. Be sure to run `composer install` ([Composer rocks](https://getcomposer.org/)) -- this has a few dependencies defined in [composer.json](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/composer.json).
-3. Point your browser at `https://<install-url>/admin/` and you will run the install script. You will need to have your MySQL credentials handy, as well as your Canvas developer credentials. Answer whatever questions it asks. This will generate a `secrets.xml` file for you (if you don't want to make one yourself, based on [secrets-example.xml](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/secrets-example.xml)) and it will password-protect the `admin` directory.
-  - When you return to `https://<install-url>/admin/` thereafter, you will be redirected to [consumers.php](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/admin/consumers.php) which provides some rudimentary LTI Consumer management for the tool.
-  - [metadata-example.xml](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/metadata-example.xml) lists some of the basic `$metadata` keys, along with some default values and the validation regexes (which the [AppMetadata](https://github.com/battis/appmetadata) object may start actually using eventually). A lot of other possible keys are evident in [config.xml](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/config.xml).
-4. Modify the CanvasAPIviaLTI class as needed -- most of your app logic can just go into [app.php](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/app.php), which is loaded after a user has been authenticated (via [launch.php](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/launch.php)).
-5. Including [common.inc.php](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/common.inc.php) will provide access to several handy global variables (as well as populating the `$_SESSION` variable with relevant information):
-  1. `SimpleXMLElement $secrets`, the secrets.xml file.
-  2. `mysqli $sql`, a database connection to your MySQL server.
-  3. `AppMetadata $metadata`, an associative array bound to the app_metadata table in your database.
-6. When it comes time for users to install the api, they can do it 'By Url' using `https://<install-url>/config.xml` and a key and secret from `https://<install-url>/admin/consumers.php`.
-	- Nota bene: the root [.htaccess](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/.htaccess) file does some jiggery-pokery to protect `*.inc.php` and `secrets.xml` _and_ it forces [config.xml](https://github.com/smtech/starter-canvas-api-via-lti/blob/master/config.xml) to be treated by Apache as a PHP file.
+Each of our advisors (who are mostly teaching faculty) advise a group of 3-7 advisees. Each advisor has an advisory course in which the advisor is the teacher and the advisees are the students. These courses are created within our Advisory Groups sub-account.
 
-### Caveat Emptor
+This LTI is placed in the Advisory Groups sub-account, which causes it to:
 
-I'm working hard to try to leave the [master](https://github.com/smtech/starter-canvas-api-via-lti/tree/master) fork of this repository in vaguely working order (that is: it should "just work" if you use it). But I am continuing to actively tweak and update this template based on my own usage of it in other projects in the [develop](https://github.com/smtech/starter-canvas-api-via-lti/tree/develop) fork, for those not risk-averse or just simply curious.
+  - Display an administrative dashboard to account administrators within the Advisory Groups sub-account. This provides a GUI for further configuration specific to our advisory setup (e.g. creating a matching observer user for each advisee)
+  - Display a course-navigation entry to teachers of every course in the Advisory Groups sub-account.
+  
+### Course-level Advisor Dashboard
 
-Since GitHub doesn't allow one to fork one's own repositories into new projects in the same account, it may be interesting to list a few of my projects that draw on (or have been updated by) this starter project:
+![Course-level Advisor Dashboard](/docs/course-level-dashboard.png)
 
-- [Canvas ⇄ ICS Sync 2.0](https://github.com/smtech/smcanvas-ics-sync/tree/release/2.0) pulled this project in to convert an administrative script into a working LTI and LAMP-based service that allows users to sync calendar ICS feeds into Canvas (and do other interesting calendar managment, including exporting ICS feeds of individual courses).
-- [Grading Analytics 2.0](https://github.com/smtech/smcanvas-grading-analytics/tree/release/2.0) pulled this project in to convert an administrative script into a working LTI and LAMP-based service that collects and presents data about how _teachers_ make use of Canvas within their courses. This has been the topic of several InstructureCon presentations ([2014](https://youtu.be/YIXypgibI80), [2015](https://community.canvaslms.com/events/1133)).
-- [CanvasHack](https://github.com/smtech/canvashack) is a direct "fork" of this project that will allow a number of my CSS/Javascript/API combo hacks to be more modularly managed and installed. It's very much a gleam in my eye right now, rather than an actual thing.
+At the course level, advisors are given several options:
+
+  - A "Relative Grades" view, that shows an advisee's performance in their classes relative to their classmates. This is drawn from the Analytics API, and normalizes all assignments to be presented as a percentage (without regard to total point value). Essentially, this is a variation of the Course Analytics view already available to teachers, but is (we think) a simpler, easier to "grok" presentation for advisors: is my advisee washed up on the beach, in the "river" with their peers or surfing the waves independently. ![Relative Grades](/docs/relative-grades.png)
+  - A listing of observer logins for their advisees. These observers are paired with the advisee via the User Observees API, which causes enrollment changes for the advisee to be synched with the observer (requiring no intervention from [our enrollment management script](https://github.com/smtech/canvas-blackbaud-enrollment-automation), which just handles student enrollments).
+  - Quick access to the Faculty Journal for advisees, via our [Faculty Journal](https://github.com/smtech/canvas-faculty-journal) add-on, which allows teachers to browse through the faculty journal entries for entire classes a là SpeedGrader.
+  
+### Account-level Administrative Dashboard
+
+![Account-level Administrative Dashboard](/docs/account-level-dashboard.png)
+
+At the account level, administrators are able to:
+
+  - Create Advisor-Observers. This can be a time-intensive process (it involves a lot of API calls). It creates (or updates, if they already exist) the advisor-observer user for all students currently enrolled in advisory courses in the sub-account. These observers are paired via the User Observees API, so that subsequent enrollment changes for the student are mirrored for the observer, and the observer can log in and see most (but [not quite all](https://community.canvaslms.com/docs/DOC-2272)) of the student's interactions in Canvas.
+  - Rename Advisory Groups. This may really be a one-off, but our advisory groups came out of our SIS this year with really dumb, non-transparent names. So this runs through the advisory group courses and names them with the teacher's last name: "Battis Advisory Group".
+  - Download Observers CSV. Periodically, updates to the observer passwords fail. Not entirely clear why. This is a short-circuit around that problem: it generates a `users.csv` document with the stored passwords for all of the observers, for easy SIS CSV import. A really elegant developer would have just fed that straight into the API.
+
+### Planned Improvements
+
+In general, improvements to our tools come through direct feedback from our faculty and students. We track specific requests (and bugs) using [the GitHub issue tracker for this repository](https://github.com/smtech/advisor-dashboard/issues).
