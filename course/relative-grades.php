@@ -8,7 +8,7 @@ function isAcademic($account, $accounts = false) {
 	}
 	if ($account == 132) { // FIXME really, hard-coded values? Really?
 		return true;
-	} elseif ($account == 1) {
+	} elseif ($account == 1 || !is_integer($account)) {
 		return false;
 	} else {
 		return isAcademic($accounts[$account]['parent_account_id'], $accounts);
