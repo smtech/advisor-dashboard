@@ -20,7 +20,7 @@ if ($firstStudent === false) {
 	$cache->setCache('first-student', $firstStudent, 7*24*60*60);
 }
 
-$smarty->assign('facultyJournal', "{$metadata['CANVAS_INSTANCE_URL']}/users/$firstStudent/user_notes?course_id={$_SESSION['courseId']}&course_name=Advisory%20Group");
+$smarty->assign('facultyJournal', "{$_SESSION['canvasInstanceUrl']}/users/$firstStudent/user_notes?course_id={$_SESSION['courseId']}&course_name=Advisory%20Group");
 
 $cache->popKey();
 
