@@ -3,40 +3,42 @@
 	"description": "A dashboard for advisors in Canvas",
 	"license": "LGPL-3.0",
 	"config": {
-		"secure-http": false
-	},
-	"repositories": [
-		{
-			"type": "package",
-			"package": {
-				"name": "spvsoftwareproducts/LTI_Tool_Provider",
-				"version": "2.5.01",
-				"dist": {
-					"url": "http://projects.oscelot.org/gf/download/frsrelease/956/6025/LTI_Tool_Provider-2.5.01.zip",
-					"type": "zip"
-				},
-				"license": "LGPL-3.0",
-				"authors": [
-					{
-						"name": "Stephen Vickers"
-					}   
-				],
-				"homepage": "http://spvsoftwareproducts.com/php/lti_tool_provider/"
-			}
-		}
-	],
+        "secure-http": false
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "spvsoftwareproducts/LTI_Tool_Provider",
+                "version": "2.5.01",
+                "dist": {
+                    "url": "http://projects.oscelot.org/gf/download/frsrelease/956/6025/LTI_Tool_Provider-2.5.01.zip",
+                    "type": "zip"
+                },
+                "license": "LGPL-3.0",
+                "authors": [
+                    {
+                        "name": "Stephen Vickers"
+                    }
+                ],
+                "homepage": "http://spvsoftwareproducts.com/php/lti_tool_provider/",
+                "autoload": {
+                    "psr-4": {
+                        "" : ""
+                    }
+                }
+            }
+        }
+    ],
 	"require": {
-		"smtech/stmarkssmarty": "dev-master",
-		"smtech/canvaspest": "~1.0",
-		"smtech/oauth-negotiator": "~1.0",
-		"battis/appmetadata": "~1.0",
-		"spvsoftwareproducts/LTI_Tool_Provider": "~2.5",
-		"pear/log": "~1.12",
-		"battis/simplecache": "~1.0",
+		"smtech/stmarks-reflexive-canvas-lti": "~0.1",
+		"smtech/oauth2-canvaslms": "~1.0",
 		"roderik/pwgen-php": "~0.1"
 	},
 	"autoload": {
-		"classmap": [""]
+		"psr-4": {
+			"smtech\\AdvisorDashboard\\": "src"
+		}
 	},
 	"authors": [
 		{

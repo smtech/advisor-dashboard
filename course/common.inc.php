@@ -1,27 +1,24 @@
 <?php
-	
-require_once(__DIR__ . '/../common.inc.php');
 
-$smarty->addTemplateDir(__DIR__ . '/templates', basename(__DIR__));
+require_once __DIR__ . '/../common.inc.php';
 
-$cache = new \Battis\HierarchicalSimpleCache($sql, basename(__DIR__));
-$cache->pushKey($_SESSION['courseId']);
-$cache->pushKey(basename(__FILE__, '.php'));
+use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
 
-$firstStudent = $cache->getCache('first-student');
+$toolbox->smarty_addTemplateDir(__DIR__ . '/templates', basename(__DIR__));
+
+$toolbox->cache_pushKey($_SESSION[ToolProvider::class]['canvas']['course_id']);
+
+$firstStudent = $toolbox->cache_get('first-student');
 if ($firstStudent === false) {
-	$enrollments = $api->get(
-		"courses/{$_SESSION['courseId']}/enrollments",
-		array(
+	$enrollments = $toolbox->api_get(
+		"courses/{$_SESSION['courseId']}/enrollments", [
 			'role[]' => 'StudentEnrollment'
-		)
+		]
 	);
 	$firstStudent = $enrollments[0]['user']['id'];
-	$cache->setCache('first-student', $firstStudent, 7*24*60*60);
+	$toolbox->cache_set('first-student', $firstStudent);
 }
 
-$smarty->assign('facultyJournal', "{$_SESSION['canvasInstanceUrl']}/users/$firstStudent/user_notes?course_id={$_SESSION['courseId']}&course_name=Advisory%20Group");
+$toolbox->smarty_assign('facultyJournal', $_SESSION[CANVAS_INSTANCE_URL] . "/users/$firstStudent/user_notes?course_id=" . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '&course_name=Advisory%20Group');
 
-$cache->popKey();
-
-?>
+$toolbox->cache_popKey();

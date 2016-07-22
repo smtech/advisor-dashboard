@@ -14,20 +14,20 @@ This LTI is placed in the Advisory Groups sub-account, which causes it to:
 
   - Display an administrative dashboard to account administrators within the Advisory Groups sub-account. This provides a GUI for further configuration specific to our advisory setup (e.g. creating a matching observer user for each advisee)
   - Display a course-navigation entry to teachers of every course in the Advisory Groups sub-account.
-  
+
 ### Course-level Advisor Dashboard
 
-![Course-level Advisor Dashboard](/docs/course-level-dashboard.png)
+![Course-level Advisor Dashboard](/images/course-level-dashboard.png)
 
 At the course level, advisors are given several options:
 
-  - A "Relative Grades" view, that shows an advisee's performance in their classes relative to their classmates. This is drawn from the Analytics API, and normalizes all assignments to be presented as a percentage (without regard to total point value). Essentially, this is a variation of the Course Analytics view already available to teachers, but is (we think) a simpler, easier to "grok" presentation for advisors: is my advisee washed up on the beach, in the "river" with their peers or surfing the waves independently. ![Relative Grades](/docs/relative-grades.png)
+  - A "Relative Grades" view, that shows an advisee's performance in their classes relative to their classmates. This is drawn from the Analytics API, and normalizes all assignments to be presented as a percentage (without regard to total point value). Essentially, this is a variation of the Course Analytics view already available to teachers, but is (we think) a simpler, easier to "grok" presentation for advisors: is my advisee washed up on the beach, in the "river" with their peers or surfing the waves independently. ![Relative Grades](/images/relative-grades.png)
   - A listing of observer logins for their advisees. These observers are paired with the advisee via the User Observees API, which causes enrollment changes for the advisee to be synched with the observer (requiring no intervention from [our enrollment management script](https://github.com/smtech/canvas-blackbaud-enrollment-automation), which just handles student enrollments).
   - Quick access to the Faculty Journal for advisees, via our [Faculty Journal](https://github.com/smtech/canvas-faculty-journal) add-on, which allows teachers to browse through the faculty journal entries for entire classes a là SpeedGrader.
-  
+
 ### Account-level Administrative Dashboard
 
-![Account-level Administrative Dashboard](/docs/account-level-dashboard.png)
+![Account-level Administrative Dashboard](/images/account-level-dashboard.png)
 
 At the account level, administrators are able to:
 

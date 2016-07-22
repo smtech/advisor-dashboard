@@ -1,46 +1,43 @@
 <?php
 
-require_once('common.inc.php');
+require_once 'common.inc.php';
 
-function isAcademic($account, $accounts = false) {
-	if (!$accounts) {
-		$accounts = getAccountList(); // FIXME this is not terribly efficient!
-	}
+$accounts = $toolbox->getAccountList();
+function isAcademic($account) {
+	global $accounts;
 	if ($account == 132) { // FIXME really, hard-coded values? Really?
 		return true;
 	} elseif ($account == 1 || !is_integer($account)) {
 		return false;
 	} else {
-		return isAcademic($accounts[$account]['parent_account_id'], $accounts);
+		return isAcademic($accounts[$account]['parent_account_id']);
 	}
 }
 
-$cache->pushKey(basename(__FILE__, '.php')); {
-	$terms = getTermList();
-	
-	$advisees = $cache->getCache('advisees');
+$toolbox->cache_pushKey(basename(__FILE__, '.php')); {
+	$terms = $toolbox->getTermList();
+
+	$advisees = $toolbox->cache_get('advisees');
 	if ($advisees === false) {
-		$advisees = $api->get(
-			"courses/{$_SESSION['courseId']}/enrollments",
-			array(
+		$advisees = $toolbox->api_get(
+			'courses/' . $_SESSION[COURSE_ID] . '/enrollments', [
 				'role[]' => 'StudentEnrollment' // FIXME this shouldn't require the faux-array
-			)
+			]
 		);
-		$cache->setCache('advisees', $advisees);
+		$toolbox->cache_set('advisees', $advisees);
 	}
-	
+
 	$advisee = (isset($_REQUEST['advisee']) ? $_REQUEST['advisee'] : $advisees[0]['user']['id']);
-	$cache->pushKey($advisee); {
-		$courses = $cache->getCache('courses');
+	$toolbox->cache_pushKey($advisee); {
+		$courses = $toolbox->cache_get('courses');
 		if ($courses === false) {
-			$allCourses = $api->get(
-				"courses",
-				array(
+			$allCourses = $toolbox->api_get(
+				"courses", [
 					'as_user_id' => $advisee
-				)
+				]
 			);
-		
-			$courses = array();
+
+			$courses = [];
 			$today = time();
 			foreach ($allCourses as $course) {
 				if (
@@ -48,30 +45,29 @@ $cache->pushKey(basename(__FILE__, '.php')); {
 					strtotime($terms[$course['enrollment_term_id']]['start_at']) < $today &&
 					strtotime($terms[$course['enrollment_term_id']]['end_at']) > $today
 				) {
-					
+
 					$courses[$course['id']] = $course;
 				}
 			}
-			$cache->setCache('courses', $courses);
+			$toolbox->cache_set('courses', $courses);
 		}
-		
-		$analytics = $cache->getCache('analytics');
+
+		$analytics = $toolbox->cache_get('analytics');
 		if ($analytics === false) {
-			$analytics = array();
+			$analytics = [];
 			foreach ($courses as $course) {
-				$analytics[$course['id']] = $api->get("courses/{$course['id']}/analytics/users/$advisee/assignments");
+				$analytics[$course['id']] = $toolbox->api_get("courses/{$course['id']}/analytics/users/$advisee/assignments");
 			}
-			$cache->setCache('analytics', $analytics);
+			$toolbox->cache_set('analytics', $analytics);
 		}
-	} $cache->popKey();
-} $cache->popKey();
+	} $toolbox->cache_popKey();
+} $toolbox->cache_popKey();
 
-$smarty->assign('advisee', $advisee);
-$smarty->assign('advisees', $advisees);
-$smarty->assign('terms', $terms);
-$smarty->assign('courses', $courses);
-$smarty->assign('analytics', $analytics);
-
-$smarty->display('relative-grades.tpl');
-
-?>
+$toolbox->smarty_assign([
+	'advisee' => $advisee,
+	'advisees' => $advisees,
+	'terms' => $terms,
+	'courses' => $courses,
+	'analytics' => $analytics
+]);
+$toolbox->smarty_display('relative-grades.tpl');
