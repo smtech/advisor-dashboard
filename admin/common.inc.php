@@ -2,4 +2,6 @@
 
 require_once __DIR__ . '/../common.inc.php';
 
-$toolbox->smarty_assign('category', 'Admin Panel');
+use Battis\DataUtilities;
+
+$toolbox->smarty_assign('category', DataUtilities::titleCase(basename(__DIR__)));

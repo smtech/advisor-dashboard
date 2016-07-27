@@ -23,9 +23,7 @@
                 ],
                 "homepage": "http://spvsoftwareproducts.com/php/lti_tool_provider/",
                 "autoload": {
-                    "psr-4": {
-                        "" : ""
-                    }
+                    "classmap": [""]
                 }
             }
         }
@@ -33,6 +31,7 @@
 	"require": {
 		"smtech/stmarks-reflexive-canvas-lti": "~0.1",
 		"smtech/oauth2-canvaslms": "~1.0",
+		"battis/data-utilities": "~0.1",
 		"roderik/pwgen-php": "~0.1"
 	},
 	"autoload": {
@@ -46,5 +45,5 @@
 			"email": "sethbattis@stmarksschool.org"
 		}
 	],
-	"minimum-stability": "dev"
+	"minimum-stability": "stable"
 }

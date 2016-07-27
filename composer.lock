@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d9bb43c5124b2ccdaeba4171350fac52",
-    "content-hash": "f3a794217ad056f12c68f4514517ac09",
+    "hash": "a27f893cdcf19f89091e781361f1bbbf",
+    "content-hash": "4f547057f1ef27e1ccebb76122a06d71",
     "packages": [
         {
             "name": "battis/appmetadata",
@@ -42,23 +42,23 @@
         },
         {
             "name": "battis/bootstrapsmarty",
-            "version": "v1.1.2.1",
+            "version": "v1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/battis/bootstrapsmarty.git",
-                "reference": "09b11bb3d0ea82e48b6a575039455488f5e001e0"
+                "reference": "16f32e7c0acbab4be38f951178e958f283a4a3d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/battis/bootstrapsmarty/zipball/09b11bb3d0ea82e48b6a575039455488f5e001e0",
-                "reference": "09b11bb3d0ea82e48b6a575039455488f5e001e0",
+                "url": "https://api.github.com/repos/battis/bootstrapsmarty/zipball/16f32e7c0acbab4be38f951178e958f283a4a3d5",
+                "reference": "16f32e7c0acbab4be38f951178e958f283a4a3d5",
                 "shasum": ""
             },
             "require": {
                 "battis/data-utilities": "~0.1",
-                "bower-asset/bootstrap-colorpicker": "dev-master",
-                "bower-asset/bootstrap-datepicker": "dev-master",
-                "bower-asset/bootstrap-sortable": "dev-master",
+                "bower-asset/bootstrap-colorpicker-2.x": "~2.3",
+                "bower-asset/bootstrap-datepicker-1.x": "~1.6",
+                "bower-asset/bootstrap-sortable-2.x": "~2.0",
                 "fxp/composer-asset-plugin": "^1.1",
                 "smarty/smarty": "~3.1"
             },
@@ -79,7 +79,7 @@
                 }
             ],
             "description": "A wrapper for Smarty to set (and maintain) defaults within a Bootstrap UI environment",
-            "time": "2016-07-22 03:22:14"
+            "time": "2016-07-26 18:02:05"
         },
         {
             "name": "battis/configxml",
@@ -155,7 +155,7 @@
         },
         {
             "name": "battis/educoder-pest-fork",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/battis/pest.git",
@@ -230,20 +230,20 @@
         },
         {
             "name": "bower-asset/bootstrap",
-            "version": "dev-master",
+            "version": "v3.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "edefe0e77a39149f971c4215301f7f8a7f15f210"
+                "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/edefe0e77a39149f971c4215301f7f8a7f15f210",
-                "reference": "edefe0e77a39149f971c4215301f7f8a7f15f210",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/0b9c4a4007c44201dce9a6cc1a38407005c26c86",
+                "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/jquery": ">=1.9.1,<=3"
+                "bower-asset/jquery": ">=1.9.1,<4.0"
             },
             "type": "bower-asset-library",
             "extra": {
@@ -278,17 +278,17 @@
             ]
         },
         {
-            "name": "bower-asset/bootstrap-colorpicker",
-            "version": "dev-master",
+            "name": "bower-asset/bootstrap-colorpicker-2.x",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mjolnic/bootstrap-colorpicker.git",
-                "reference": "7847a84ab7ec3b17474fb16b7e68fc02838efe52"
+                "reference": "59f06437c86b7c0e074aee8a699819fd1c07a173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mjolnic/bootstrap-colorpicker/zipball/7847a84ab7ec3b17474fb16b7e68fc02838efe52",
-                "reference": "7847a84ab7ec3b17474fb16b7e68fc02838efe52",
+                "url": "https://api.github.com/repos/mjolnic/bootstrap-colorpicker/zipball/59f06437c86b7c0e074aee8a699819fd1c07a173",
+                "reference": "59f06437c86b7c0e074aee8a699819fd1c07a173",
                 "shasum": ""
             },
             "require": {
@@ -314,27 +314,27 @@
             }
         },
         {
-            "name": "bower-asset/bootstrap-datepicker",
-            "version": "dev-master",
+            "name": "bower-asset/bootstrap-datepicker-1.x",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eternicode/bootstrap-datepicker.git",
-                "reference": "3bde2d87a291fcc1808a86dc9317eba9d361b7a0"
+                "reference": "f4df9ac6679b15b12157324c556e0da1c628af6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eternicode/bootstrap-datepicker/zipball/3bde2d87a291fcc1808a86dc9317eba9d361b7a0",
-                "reference": "3bde2d87a291fcc1808a86dc9317eba9d361b7a0",
+                "url": "https://api.github.com/repos/eternicode/bootstrap-datepicker/zipball/f4df9ac6679b15b12157324c556e0da1c628af6e",
+                "reference": "f4df9ac6679b15b12157324c556e0da1c628af6e",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/jquery": ">=1.7.1,<3.0.0"
+                "bower-asset/jquery": ">=1.7.1"
             },
             "type": "bower-asset-library",
             "extra": {
                 "bower-asset-main": [
                     "dist/css/bootstrap-datepicker3.css",
-                    "dist/js/bootstrap-datepicker.js"
+                    "dist/js/bootstrap-datepicker.min.js"
                 ],
                 "bower-asset-ignore": []
             },
@@ -343,8 +343,8 @@
             ]
         },
         {
-            "name": "bower-asset/bootstrap-sortable",
-            "version": "dev-master",
+            "name": "bower-asset/bootstrap-sortable-2.x",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drvic10k/bootstrap-sortable.git",
@@ -365,10 +365,7 @@
                 "bower-asset-main": "Scripts/bootstrap-sortable.js",
                 "bower-asset-ignore": [
                     "Scripts/moment.min.js"
-                ],
-                "branch-alias": {
-                    "dev-master": "2.0.0-dev"
-                }
+                ]
             },
             "license": [
                 "MIT"
@@ -384,16 +381,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "2.2.4",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
+                "reference": "6f02bc382c0529d3b4f68f6b2ad21876642dbbfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/c0185ab7c75aab88762c5aae780b9d83b80eda72",
-                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/6f02bc382c0529d3b4f68f6b2ad21876642dbbfe",
+                "reference": "6f02bc382c0529d3b4f68f6b2ad21876642dbbfe",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -415,7 +412,7 @@
         },
         {
             "name": "bower-asset/moment",
-            "version": "dev-master",
+            "version": "2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moment/moment.git",
@@ -452,16 +449,16 @@
         },
         {
             "name": "fxp/composer-asset-plugin",
-            "version": "dev-master",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fxpio/composer-asset-plugin.git",
-                "reference": "47c08367901b64d41d87f84e7f3fd2aa9417ea71"
+                "reference": "8d74bc7c714aadbda54622c216b2e7bf786595cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/47c08367901b64d41d87f84e7f3fd2aa9417ea71",
-                "reference": "47c08367901b64d41d87f84e7f3fd2aa9417ea71",
+                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/8d74bc7c714aadbda54622c216b2e7bf786595cb",
+                "reference": "8d74bc7c714aadbda54622c216b2e7bf786595cb",
                 "shasum": ""
             },
             "require": {
@@ -504,20 +501,20 @@
                 "npm",
                 "package"
             ],
-            "time": "2016-07-14 08:50:38"
+            "time": "2016-07-01 12:04:16"
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "dev-master",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "158c17127299b183d4b9784d7385bb29fe2f5982"
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/158c17127299b183d4b9784d7385bb29fe2f5982",
-                "reference": "158c17127299b183d4b9784d7385bb29fe2f5982",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
                 "shasum": ""
             },
             "require": {
@@ -566,7 +563,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-07-21 20:48:12"
+            "time": "2016-07-15 17:22:37"
         },
         {
             "name": "guzzlehttp/promises",
@@ -621,16 +618,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "dev-master",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "682d637bec5dd750bba5568e980888a639d7c35b"
+                "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/682d637bec5dd750bba5568e980888a639d7c35b",
-                "reference": "682d637bec5dd750bba5568e980888a639d7c35b",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
+                "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
                 "shasum": ""
             },
             "require": {
@@ -666,40 +663,33 @@
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
-                },
-                {
-                    "name": "Tobias Schultze",
-                    "homepage": "https://github.com/Tobion"
                 }
             ],
-            "description": "PSR-7 message implementation that also provides common utility methods",
+            "description": "PSR-7 message implementation",
             "keywords": [
                 "http",
                 "message",
-                "request",
-                "response",
                 "stream",
-                "uri",
-                "url"
+                "uri"
             ],
-            "time": "2016-07-21 23:46:37"
+            "time": "2016-06-24 23:00:38"
         },
         {
             "name": "ircmaxell/random-lib",
-            "version": "dev-master",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/RandomLib.git",
-                "reference": "91fec07c0945061bae7ed172797390d1decb0611"
+                "reference": "13efa4368bb2ac88bb3b1459b487d907de4dbf7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/91fec07c0945061bae7ed172797390d1decb0611",
-                "reference": "91fec07c0945061bae7ed172797390d1decb0611",
+                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/13efa4368bb2ac88bb3b1459b487d907de4dbf7c",
+                "reference": "13efa4368bb2ac88bb3b1459b487d907de4dbf7c",
                 "shasum": ""
             },
             "require": {
-                "ircmaxell/security-lib": "1.1.*@dev",
+                "ircmaxell/security-lib": "1.0.*@dev",
                 "php": ">=5.3.2"
             },
             "require-dev": {
@@ -709,7 +699,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -736,20 +726,20 @@
                 "random-numbers",
                 "random-strings"
             ],
-            "time": "2016-07-04 21:20:13"
+            "time": "2015-01-15 16:31:45"
         },
         {
             "name": "ircmaxell/security-lib",
-            "version": "v1.1.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/SecurityLib.git",
-                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5"
+                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
-                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
+                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/80934de3c482dcafb46b5756e59ebece082b6dc7",
+                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7",
                 "shasum": ""
             },
             "require": {
@@ -759,11 +749,6 @@
                 "mikey179/vfsstream": "1.1.*"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "SecurityLib": "lib"
@@ -781,8 +766,8 @@
                 }
             ],
             "description": "A Base Security Library",
-            "homepage": "https://github.com/ircmaxell/SecurityLib",
-            "time": "2015-03-20 14:31:23"
+            "homepage": "https://github.com/ircmaxell/PHP-SecurityLib",
+            "time": "2013-04-30 18:00:34"
         },
         {
             "name": "league/oauth2-client",
@@ -1001,7 +986,7 @@
         },
         {
             "name": "psr/http-message",
-            "version": "dev-master",
+            "version": "1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
@@ -1094,16 +1079,16 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "dev-master",
+            "version": "v3.1.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "6d7d36d9a675f69a18f5a8722dd22c0f2f70504d"
+                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/6d7d36d9a675f69a18f5a8722dd22c0f2f70504d",
-                "reference": "6d7d36d9a675f69a18f5a8722dd22c0f2f70504d",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
+                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
                 "shasum": ""
             },
             "require": {
@@ -1145,7 +1130,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-07-19 18:22:10"
+            "time": "2015-12-21 01:57:06"
         },
         {
             "name": "smtech/canvaspest",
@@ -1153,16 +1138,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/canvaspest.git",
-                "reference": "d9b48fb1e368bbaccfd305c5fe49c07da1519f39"
+                "reference": "c1a5b7901e5d637afd05158541b1090d70027ed4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/canvaspest/zipball/d9b48fb1e368bbaccfd305c5fe49c07da1519f39",
-                "reference": "d9b48fb1e368bbaccfd305c5fe49c07da1519f39",
+                "url": "https://api.github.com/repos/smtech/canvaspest/zipball/c1a5b7901e5d637afd05158541b1090d70027ed4",
+                "reference": "c1a5b7901e5d637afd05158541b1090d70027ed4",
                 "shasum": ""
             },
             "require": {
-                "battis/educoder-pest-fork": "dev-master"
+                "battis/educoder-pest-fork": "~1.0"
             },
             "type": "library",
             "autoload": {
@@ -1181,20 +1166,20 @@
                 }
             ],
             "description": "An extension of Pest to make RESTful queries to the Instructure Canvas API",
-            "time": "2016-06-10 13:35:42"
+            "time": "2016-07-25 02:29:48"
         },
         {
             "name": "smtech/lti-configuration-xml",
-            "version": "v1.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/lti-configuration-xml.git",
-                "reference": "0828b0fb1d4311a56f84229f6b4e95e322345390"
+                "reference": "ab9a963bb0f9d4a6689c20af20532d3af7f49a1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/lti-configuration-xml/zipball/0828b0fb1d4311a56f84229f6b4e95e322345390",
-                "reference": "0828b0fb1d4311a56f84229f6b4e95e322345390",
+                "url": "https://api.github.com/repos/smtech/lti-configuration-xml/zipball/ab9a963bb0f9d4a6689c20af20532d3af7f49a1f",
+                "reference": "ab9a963bb0f9d4a6689c20af20532d3af7f49a1f",
                 "shasum": ""
             },
             "require": {
@@ -1217,7 +1202,7 @@
                 }
             ],
             "description": "Generate an LTI configuration XML file from parameters",
-            "time": "2016-07-21 02:12:02"
+            "time": "2016-07-26 18:38:05"
         },
         {
             "name": "smtech/oauth2-canvaslms",
@@ -1258,16 +1243,16 @@
         },
         {
             "name": "smtech/reflexive-canvas-lti",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/reflexive-canvas-lti.git",
-                "reference": "ba33b048b4e4699b96ae7abc9d635c2f2360e118"
+                "reference": "0c0bb21600b579547dabfb2ebe8dc285b2011051"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/ba33b048b4e4699b96ae7abc9d635c2f2360e118",
-                "reference": "ba33b048b4e4699b96ae7abc9d635c2f2360e118",
+                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/0c0bb21600b579547dabfb2ebe8dc285b2011051",
+                "reference": "0c0bb21600b579547dabfb2ebe8dc285b2011051",
                 "shasum": ""
             },
             "require": {
@@ -1297,11 +1282,11 @@
                 }
             ],
             "description": "LTI tool provider class that includes the \"reflexive\" reach back into Canvas via the API",
-            "time": "2016-07-22 06:54:53"
+            "time": "2016-07-26 18:39:58"
         },
         {
             "name": "smtech/stmarks-colors",
-            "version": "dev-master",
+            "version": "v1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-colors.git",
@@ -1338,12 +1323,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-reflexive-canvas-lti.git",
-                "reference": "f86a3712957522fc9e3d96db0b9f38ba62a16e9a"
+                "reference": "518205fce42a82cdadb243ea40a47e153f50cda4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/f86a3712957522fc9e3d96db0b9f38ba62a16e9a",
-                "reference": "f86a3712957522fc9e3d96db0b9f38ba62a16e9a",
+                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/518205fce42a82cdadb243ea40a47e153f50cda4",
+                "reference": "518205fce42a82cdadb243ea40a47e153f50cda4",
                 "shasum": ""
             },
             "require": {
@@ -1368,28 +1353,25 @@
                 }
             ],
             "description": "A toolbox for managing LTI authentication and tool provider development (with St. Mark's templating)",
-            "time": "2016-07-22 03:28:03"
+            "time": "2016-07-25 04:00:27"
         },
         {
             "name": "smtech/stmarkssmarty",
-            "version": "v0.5",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-bootstrapsmarty.git",
-                "reference": "ddb27fba830765e3f663b693c7eb79746d97a8d4"
+                "reference": "6339b88ffa26e506bf8e750fa401635427a5a300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-bootstrapsmarty/zipball/ddb27fba830765e3f663b693c7eb79746d97a8d4",
-                "reference": "ddb27fba830765e3f663b693c7eb79746d97a8d4",
+                "url": "https://api.github.com/repos/smtech/stmarks-bootstrapsmarty/zipball/6339b88ffa26e506bf8e750fa401635427a5a300",
+                "reference": "6339b88ffa26e506bf8e750fa401635427a5a300",
                 "shasum": ""
             },
             "require": {
-                "battis/bootstrapsmarty": "^1.1",
-                "smtech/stmarks-colors": "dev-master"
-            },
-            "suggest": {
-                "battis/appmetadata": "MySQL-backed globals array for app metadata storage"
+                "battis/bootstrapsmarty": "~1.1",
+                "smtech/stmarks-colors": "~1.0"
             },
             "type": "library",
             "autoload": {
@@ -1408,7 +1390,7 @@
                 }
             ],
             "description": "A standard Smarty install for St. Mark's projects",
-            "time": "2016-03-17 20:07:04"
+            "time": "2016-07-25 03:42:31"
         },
         {
             "name": "spvsoftwareproducts/LTI_Tool_Provider",
@@ -1420,6 +1402,11 @@
                 "shasum": null
             },
             "type": "library",
+            "autoload": {
+                "classmap": [
+                    ""
+                ]
+            },
             "license": [
                 "LGPL-3.0"
             ],
@@ -1433,7 +1420,7 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
