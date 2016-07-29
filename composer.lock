@@ -1323,15 +1323,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-reflexive-canvas-lti.git",
-                "reference": "518205fce42a82cdadb243ea40a47e153f50cda4"
+                "reference": "3c40f1003a86eb776ebdf2da19b0ef5d2d76bee6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/518205fce42a82cdadb243ea40a47e153f50cda4",
-                "reference": "518205fce42a82cdadb243ea40a47e153f50cda4",
+                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/3c40f1003a86eb776ebdf2da19b0ef5d2d76bee6",
+                "reference": "3c40f1003a86eb776ebdf2da19b0ef5d2d76bee6",
                 "shasum": ""
             },
             "require": {
+                "battis/data-utilities": "~0.1",
                 "battis/simplecache": "~1.0",
                 "smtech/reflexive-canvas-lti": "~1.0",
                 "smtech/stmarkssmarty": "~0.5"
@@ -1353,7 +1354,7 @@
                 }
             ],
             "description": "A toolbox for managing LTI authentication and tool provider development (with St. Mark's templating)",
-            "time": "2016-07-25 04:00:27"
+            "time": "2016-07-27 17:29:56"
         },
         {
             "name": "smtech/stmarkssmarty",

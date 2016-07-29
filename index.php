@@ -15,20 +15,16 @@ $action = (empty($_REQUEST['action']) ?
 	strtolower($_REQUEST['action'])
 );
 
+/* action requests only come from outside the LTI! */
+if ($action) {
+    unset($_SESSION[ToolProvider::class]);
+}
+
 /* authenticate LTI launch request, if present */
 if ($toolbox->lti_isLaunching()) {
 	$_SESSION = []; /* clear all session data */
 	$toolbox->lti_authenticate();
 	exit;
-}
-
-/* check if referrer matches LTI launch request referrer */
-if (!empty($_SESSION[ToolProvider::class]) && (
-	empty($_SERVER['HTTP_REFERRER']) ||
-	$_SERVER['HTTP_REFERRER'] != $_SESSION[ToolProvider::class]['httpReferrer'])
-) {
-	/* ...and clear authentication data if referrers don't match */
-	unset($_SESSION[ToolProvider::class]);
 }
 
 /* if authenticated LTI launch, redirect to appropriate placement view */

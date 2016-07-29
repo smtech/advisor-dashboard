@@ -10,9 +10,10 @@ $toolbox->cache_pushKey($_SESSION[ToolProvider::class]['canvas']['course_id']);
 
 /* get and cache ID of first student in the advisory group */
 $firstStudent = $toolbox->cache_get('first-student');
-if ($firstStudent === false) {
+if (empty($firstStudent)) {
 	$enrollments = $toolbox->api_get(
-		'courses/' . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '/enrollments', [
+		'courses/' . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '/enrollments',
+		[
 			'role[]' => 'StudentEnrollment'
 		]
 	);

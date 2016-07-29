@@ -4,6 +4,7 @@ namespace smtech\AdvisorDashboard;
 
 use smtech\LTI\Configuration\Option;
 use Battis\DataUtilities;
+use Battis\HierarchicalSimpleCache;
 
 /**
  * Advisor Dashboard toolbox
@@ -47,15 +48,11 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
      **/
     function getAccountList()
     {
-        $base = $this->getCache()->getBase();
-        while ($this->cache_popKey()) {
-            /* twiddle our fingers */
-        }
-        $this->cache_pushKey(basename(Toolbox::class));
+        $cache = new HierarchicalSimpleCache($this->getMySQL(), __CLASS__);
 
-        $accounts = $this->cache_get('accounts');
+        $accounts = $cache->getCache('accounts');
         if ($accounts === false) {
-            $accountsResponse = $this->get(
+            $accountsResponse = $this->api_get(
                 'accounts/1/sub_accounts',
                 [
                     'recursive' => 'true'
@@ -65,11 +62,8 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
             foreach ($accountsResponse as $account) {
                 $accounts[$account['id']] = $account;
             }
-            $this->cache_set('accounts', $accounts);
+            $cache->setCache('accounts', $accounts);
         }
-
-        $this->cache_popKey();
-        $this->cache_pushKey($base);
 
         return $accounts;
     }
@@ -81,15 +75,11 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
      **/
     function getTermList()
     {
-        $base = $this->getCache()->getBase();
-        while ($this->cache_popKey()) {
-            /* do nothing */
-        }
-        $this->cache_pushKey(basename(Toolbox::class));
+        $cache = new HierarchicalSimpleCache($this->getMySQL(), __CLASS__);
 
         $terms = $cache->getCache('terms');
         if ($terms === false) {
-            $_terms = $this->get(
+            $_terms = $this->api_get(
                 'accounts/1/terms',
                 [
                     'workflow_state' => 'active'
@@ -100,11 +90,8 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
             foreach ($termsResponse as $term) {
                 $terms[$term['id']] = $term;
             }
-            $this->cache_set('terms', $terms);
+            $cache->setCache('terms', $terms);
         }
-
-        $this->cache_popKey();
-        $this->cache_pushKey($base);
 
         return $terms;
     }
