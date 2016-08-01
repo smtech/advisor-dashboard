@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+
+	<!-- Information about the tool provider (used to generate config.xml for the tool!)-->
+	<tool>
+		<name>Advisor Dashboard</name>
+		<description>A dashboard for advisors in Canvas</description>
+		<id>smtech-advisor-dashboard</id>
+		<icon>images/icon.png</icon>
+		<authenticate>index.php</authenticate>
+
+		<!-- handler paths are relative to this configuration XML file -->
+		<handlers>
+			<base>index.php</base>
+		</handlers>
+
+		<!-- Where is the log file for the tool provider? (path relative to this XML file) -->
+		<log>logs/advisor-dashboard.log</log>
+	</tool>
+
+	<!-- Credentials for MySQL database -->
+	<mysql>
+		<host>localhost</host>
+		<username>advisordashboard</username>
+		<password>GlD5x}eq69%Wni2</password>
+		<database>advisordashboard</database>
+	</mysql>
+
+	<!-- Credentials for Canvas API (either <url> and <token> OR <key> and <secret> for OAuth token request) -->
+	<canvas>
+		<url>https://canvas.instructure.com</url>
+		<token>1106~3AmvhPCaGcuFhGpKgAr0Fe3mvfRJYfp6jtil5rQol8qfqQo2oUlVW35TUOSWN5Ul</token>
+	</canvas>
+</config>

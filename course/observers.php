@@ -1,48 +1,45 @@
 <?php
 
-require_once('common.inc.php');
+require_once 'common.inc.php';
 
-$cache->setLifetime(60*60); /* 1 hour */
-
-$cache->pushKey(basename(__FILE__, '.php'));
-
-$observers = $cache->getCache('observers');
-if ($observers === false) {
-	$observers = array();
-	$enrollments = $api->get(
-		"courses/{$_SESSION['courseId']}/enrollments",
-		array(
-			'role[]' => 'ObserverEnrollment' // FIXME this shouldn't requrie the faux-array
-		)
-	);
-	foreach ($enrollments as $enrollment) {
-		$observers[] = $api->get("users/{$enrollment['user']['id']}/profile");
+$toolbox->cache_pushKey(basename(__FILE__, '.php')); {
+	$observers = $toolbox->cache_get('observers');
+	if ($observers === false) {
+		$observers = [];
+		$enrollments = $toolbox->api_get(
+			'courses/' . $_SESSION[COURSE_ID] . '/enrollments', [
+				'role[]' => 'ObserverEnrollment' // FIXME this shouldn't requrie the faux-array
+			]
+		);
+		foreach ($enrollments as $enrollment) {
+			$observers[] = $toolbox->api_get("users/{$enrollment['user']['id']}/profile");
+		}
+		$toolbox->cache_set('observers', $observers);
 	}
-	$cache->setCache('observers', $observers);
-}
 
-$observees = $cache->getCache('observees');
-if ($observees === false) {
-	$observees = array();
+	$observees = $toolbox->cache_get('observees');
+	if ($observees === false) {
+		$observees = [];
+		foreach ($observers as $observer) {
+			$response = $toolbox->api_get("users/{$observer['id']}/observees");
+			$observees[$observer['id']] = $response[0];
+		}
+		$toolbox->cache_set('observees', $observees);
+	}
+
+	$passwords = [];
 	foreach ($observers as $observer) {
-		$response = $api->get("users/{$observer['id']}/observees");
-		$observees[$observer['id']] = $response[0];
+		$response = $toolbox->mysql_query("
+			SELECT * FROM `observers` WHERE `id` = '{$observer['id']}' LIMIT 1
+		");
+		$password = $response->fetch_assoc();
+		$passwords[$observer['id']] = $password['password'];
 	}
-	$cache->setCache('observees', $observees);
-}
+} $toolbox->cache_popKey();
 
-$passwords = array();
-foreach ($observers as $observer) {
-	$response = $sql->query("
-		SELECT * FROM `observers` WHERE `id` = '{$observer['id']}' LIMIT 1
-	");
-	$password = $response->fetch_assoc();
-	$passwords[$observer['id']] = $password['password'];
-}
-
-$smarty->assign('observers', $observers);
-$smarty->assign('passwords', $passwords);
-$smarty->assign('observees', $observees);
-$smarty->display('observers.tpl');
-	
-?>
+$toolbox->smarty_assign([
+	'observers' => $observers,
+	'passwords' => $passwords,
+	'observees' => $observees
+]);
+$toolbox->smarty_display('observers.tpl');

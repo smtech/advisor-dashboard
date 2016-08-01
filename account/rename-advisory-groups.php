@@ -2,50 +2,40 @@
 
 require_once('common.inc.php');
 
+use Battis\BootstrapSmarty\NotificationMessage;
+
 define('STEP_INSTRUCTIONS', 1);
 define('STEP_RENAME', 2);
 
 $step = (empty($_REQUEST['step']) ? STEP_INSTRUCTIONS : $_REQUEST['step']);
 
 switch ($step) {
-	
+
 	case STEP_RENAME:
 		try {
 			$updated = 0;
 			$unchanged = 0;
-			$courses = $api->get(
-				"accounts/{$_REQUEST['account']}/courses",
-				array(
-					'enrollment_term_id' => $_REQUEST['term'],
-					'with_enrollments' => 'true'
-				)
-			);
+			$courses = $toolbox->api_get("accounts/{$_REQUEST['account']}/courses", [
+				'enrollment_term_id' => $_REQUEST['term'],
+				'with_enrollments' => 'true'
+			]);
 			foreach ($courses as $course) {
-				$teachers = $api->get(
-					"/courses/{$course['id']}/enrollments",
-					array(
-						'type' => 'TeacherEnrollment'
-					)
-				);
+				$teachers = $toolbox->api_get("/courses/{$course['id']}/enrollments", [
+					'type' => 'TeacherEnrollment'
+				]);
 				if ($teacher = $teachers[0]['user']) {
 					$nameParts = explode(',', $teacher['sortable_name']);
 					$courseName = trim($nameParts[0]) . ' Advisory Group';
-					$api->put(
-						"courses/{$course['id']}",
-						array(
-							'course[name]' => $courseName,
-							'course[course_code]' => $courseName
-						)
-					);
-					$sections = $api->get("courses/{$course['id']}/sections");
+					$toolbox->api_put("courses/{$course['id']}", [
+						'course[name]' => $courseName,
+						'course[course_code]' => $courseName
+					]);
+					$sections = $toolbox->api_get("courses/{$course['id']}/sections");
 					foreach($sections as $section) {
 						if ($section['name'] == $course['name']) {
-							$api->put(
-								"sections/{$sections[0]['id']}",
-								array(
-									'course_section[name]' => $courseName
-								)
-							);
+							$toolbox->api_put("sections/{$sections[0]['id']}", [
+								'course_section[name]' => $courseName
+							]);
 						}
 					}
 					$updated++;
@@ -54,34 +44,28 @@ switch ($step) {
 				}
 			}
 		} catch (Exception $e) {
-			exceptionErrorMessage($e);
+			$toolbox->smarty_addMessage('Error ' . $e->getCode(), $e->getMessage(), NotificationMessage::ERROR);
 		}
-		$courses = $api->get(
-			"accounts/{$_REQUEST['account']}/courses",
-			array(
-				'enrollment_term_id' => $_REQUEST['term'],
-				'with_enrollments' => 'true',
-				'published' => 'true'
-			)
-		);
-		
-		$smarty->addMessage(
+		$courses = $toolbox->api_get("accounts/{$_REQUEST['account']}/courses", [
+			'enrollment_term_id' => $_REQUEST['term'],
+			'with_enrollments' => 'true',
+			'published' => 'true'
+		]);
+
+		$toolbox->smarty_addMessage(
 			'Renamed advisory courses',
 			"$updated courses were renamed, and $unchanged were left unchanged.",
 			NotificationMessage::GOOD
 		);
-	
+
 	case STEP_INSTRUCTIONS:
 	default:
-		$smarty->assign('terms', getTermList());
-		$smarty->assign(
-			'formHidden',
-			array(
+		$toolbox->smarty_assign([
+			'terms' => $toolbox->getTermList(),
+			'formHidden' => [
 				'step' => STEP_RENAME,
 				'account' => $_SESSION['accountId']
-			)
-		);
-		$smarty->display(basename(__FILE__, '.php') . '/instructions.tpl');
+			]
+		]);
+		$toolbox->smarty_display(basename(__FILE__, '.php') . '/instructions.tpl');
 }
-	
-?>

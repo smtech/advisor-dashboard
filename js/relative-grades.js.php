@@ -1,7 +1,7 @@
 <?php
 
 define('IGNORE_LTI', true);
-require_once(__DIR__ . '/../course/common.inc.php');
+require_once __DIR__ . '/../course/common.inc.php';
 
 // http://paletton.com/#uid=33s0u0koA++cP+Mj9+Yus+WMOZA
 define('TRANSPARENT', 'rgba(0, 0, 0, 0)');
@@ -26,13 +26,13 @@ function normalize($numerator, $denominator = false) {
 	$points = $denominator;
 	return min(100, $numerator / $denominator * 100);
 }
-	
+
 header('Content-Type: application/javascript');
 
-$cache->pushKey(basename(__FILE__, '.js.php'));
-$cache->pushKey($_REQUEST['advisee']);
+$toolbox->cache_pushKey(basename(__FILE__, '.js.php'));
+$toolbox->cache_pushKey($_REQUEST['advisee']);
 
-$analytics = $cache->getCache('analytics');
+$analytics = $toolbox->cache_get('analytics');
 if ($analytics === false) {
 	exit;
 }
@@ -46,7 +46,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
 <?php foreach ($analytics as $course => $analytic): ?>
 
 	<?php
-		
+
 		$labels = array();
 		$max_scores = array();
 		$min_scores = array();
@@ -62,7 +62,11 @@ Chart.defaults.global.scaleBeginAtZero = true;
 				$medians[] = normalize($data['median']);
 				$first_quartiles[] = normalize($data['first_quartile']);
 				$third_quartiles[] = normalize($data['third_quartile']);
-				$scores[] = normalize($data['submission']['score']);
+				if (empty($data['submission'])) {
+					$scores[] = '""'; /* some assignments may not have grades */
+				} else {
+					$scores[] = normalize($data['submission']['score']);
+				}
 			}
 		}
 	?>
@@ -108,7 +112,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
 			}
 		]
 	};
-	
+
 	var options = {
 		pointDot: false,
 		scaleShowGridLines: false
@@ -116,6 +120,8 @@ Chart.defaults.global.scaleBeginAtZero = true;
 
 	// Get context with jQuery - using jQuery's .get() method.
 	var ctx = $("#course_<?= $course ?>").get(0).getContext("2d");
+
+	// TODO detect empty datasets and remove canvas and replace with message
 
 	// This will get the first returned node in the jQuery collection.
 	var chart = new Chart(ctx).Line(data, options);

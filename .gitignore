@@ -1,6 +1,6 @@
 # authentication credentials
 .htpasswd
-secrets.xml
+config.xml
 
 # dynamically-loaded and/or caches
 /logs/*.log
@@ -10,6 +10,3 @@ secrets.xml
 /smarty/templates_c/*
 !/smarty/templates_c/README.md
 /admin/.htaccess
-
-# file system
-.DS_*
