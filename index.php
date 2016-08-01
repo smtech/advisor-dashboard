@@ -4,6 +4,7 @@ require_once 'common.inc.php';
 
 use smtech\AdvisorDashboard\Toolbox;
 use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
+use smtech\ReflexiveCanvasLTI\Exception\ConfigurationException;
 
 define('ACTION_CONFIG', 'config');
 define('ACTION_INSTALL', 'install');
@@ -53,6 +54,12 @@ switch ($action) {
 		$_SESSION['toolbox'] = Toolbox::fromConfiguration(CONFIG_FILE, true);
 		$toolbox =& $_SESSION['toolbox'];
 
+		/* patch in newly-acquired token via oauth, if present */
+		if (!empty($_SESSION['TOOL_CANVAS_API'])) {
+			$toolbox->config('TOOL_CANVAS_API', $_SESSION['TOOL_CANVAS_API']);
+			unset($_SESSION['TOOL_CANVAS_API']);
+		}
+
 		/* test to see if we can connect to the API */
 		try {
 			$toolbox->getAPI();
@@ -65,7 +72,7 @@ switch ($action) {
 				!empty($canvas['secret'])
 			) {
 				/* if so, request an API access token interactively */
-				header('Location: ' . $toolbox->config('APP_URL') . "/admin/oauth.php?return={$_SERVER['REQUEST_URI']}");
+				header('Location: ' . $toolbox->config('APP_URL') . "/admin/oauth.php?oauth-return={$_SERVER['REQUEST_URI']}");
 				exit;
 			} else { /* no (understandable) API credentials available -- doh! */
 				throw $e;

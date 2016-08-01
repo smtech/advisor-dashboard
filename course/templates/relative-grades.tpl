@@ -15,6 +15,7 @@
 		</ul>
 
 		<p><em>Nota bene: zero-point assignments and ungraded assignments (assignments where the maximum grade was zero) have been filtered out of this view. If your advisee has "bottomed out" at zero on an assignment, it may mean that their submission is not yet graded, while other students' submissions have been graded.</em></p>
+	</div>
 
 	{foreach $courses as $course}
 		<div class="container">
@@ -26,7 +27,7 @@
 	{/foreach}
 {/block}
 
-{block name="post-bootstrap-scripts"}
+{block name="post-bootstrap-scripts" append}
 	<script src="../js/Chart.min.js"></script>
 	<script src="../js/relative-grades.js.php?advisee={$advisee}"></script>
 {/block}

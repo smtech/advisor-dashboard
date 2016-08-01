@@ -2,7 +2,7 @@
 
 {block name="content"}
 
-    <div class="page-header">
+    <div class="container page-header">
         <h1>Configure Tool Provider <small>Canvas API</small></h1>
     </div>
 

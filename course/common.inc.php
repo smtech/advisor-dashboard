@@ -4,7 +4,7 @@ require_once __DIR__ . '/../common.inc.php';
 
 use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
 
-$toolbox->smarty_addTemplateDir(__DIR__ . '/templates', basename(__DIR__));
+$toolbox->getSmarty()->prependTemplateDir(__DIR__ . '/templates', basename(__DIR__));
 
 $toolbox->cache_pushKey($_SESSION[ToolProvider::class]['canvas']['course_id']);
 

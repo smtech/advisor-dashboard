@@ -5,9 +5,11 @@ require_once 'common.inc.php';
 use smtech\OAuth2\Client\Provider\CanvasLMS;
 use Battis\DataUtilities;
 
+define('OAUTH_STATE', 'oauth_state');
+
 /* have we been asked to return to a particular URL? */
-if (!empty($_REQUEST['return'])) {
-	$_SESSION['oauth-return'] = $_REQUEST['return'];
+if (!empty($_REQUEST['oauth-return'])) {
+	$_SESSION['oauth-return'] = $_REQUEST['oauth-return'];
 }
 
 /* do we have a Canvas instance URL yet? */
@@ -43,9 +45,11 @@ if (!isset($_GET['code'])) {
 } else {
 	/* acquire and save our token (using our existing code) */
 	$canvas = $toolbox->config('TOOL_CANVAS_API');
-	$canvas['url'] = "{$_SESSION['CANVAS_INSTANCE_URL']}/api/v1";
-	$canvas['token'] = $provider->getAccessToken('authorization_code', [CODE => $_GET[CODE]]);
-	$toolbox->config('TOOL_CANVAS_API', $canvas);
+	$canvas['url'] = $_SESSION[CANVAS_INSTANCE_URL];
+	$canvas['token'] = $provider->getAccessToken('authorization_code', ['code' => $_GET['code']])->getToken();
+
+	/* pass back the newly-acquired token in session data */
+	$_SESSION['TOOL_CANVAS_API'] = $canvas;
 
 	/* return to what we were doing before we had to authenticate */
 	header("Location: {$_SESSION['oauth-return']}");

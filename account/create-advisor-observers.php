@@ -21,6 +21,19 @@ define('PASSWORD_SYMBOLS', false); // no confusing symbols
 define('STEP_INSTRUCTIONS', 1);
 define('STEP_GENERATE', 2);
 
+/* create observers table if it doesn't already exist */
+// TODO make observer table name configurable
+if ($toolbox->mysql_query("SHOW TABLES LIKE 'lti_%'")->num_rows == 0); {
+	$toolbox->mysql_query("
+		CREATE TABLE `observers` (
+		  `id` int(11) unsigned NOT NULL,
+		  `password` varchar(10) NOT NULL DEFAULT '',
+		  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		  PRIMARY KEY (`id`)
+		) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+	");
+}
+
 $toolbox->cache_pushKey(basename(__FILE__, '.php')); {
 
 	$pwgen = new PWGen(

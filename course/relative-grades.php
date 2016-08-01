@@ -37,11 +37,7 @@ $toolbox->cache_pushKey($advisee);
 
 $courses = $toolbox->cache_get('courses');
 if ($courses === false) {
-	$allCourses = $toolbox->api_get(
-		"courses", [
-			'as_user_id' => $advisee
-		]
-	);
+	$allCourses = $toolbox->api_get("users/$advisee/courses");
 
 	$courses = [];
 	foreach ($allCourses as $course) {
@@ -77,7 +73,11 @@ $toolbox->smarty_assign([
 	'canvasInstanceUrl' => $_SESSION[CANVAS_INSTANCE_URL]
 ]);
 
-// FIXME why is Smarty not inheriting from its grandparent template?
-$toolbox->getSmarty()->addScript(DataUtilities::URLfromPath(__DIR__ . '/../js/Chart.min.js'), 'D3 Chart');
-$toolbox->getSmarty()->addScript(DataUtilities::URLfromPath(__DIR__ . '/../js/relative-grades.js.php') . "?advisee=$advisee", 'Relative Grades');
+/*
+ * FIXME unclear why the post-bootstrap-scripts block isn't working in the
+ *     relative-grades.tpl file
+ */
+$toolbox->getSmarty()->addScript(DataUtilities::URLfromPath(__DIR__ . '/../js/Chart.min.js'));
+$toolbox->getSmarty()->addScript(DataUtilities::URLfromPath(__DIR__ . '/../js/relative-grades.js.php') . "?advisee={$advisee}");
+
 $toolbox->smarty_display('relative-grades.tpl');

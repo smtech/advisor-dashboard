@@ -42,16 +42,16 @@
         },
         {
             "name": "battis/bootstrapsmarty",
-            "version": "v1.1.3",
+            "version": "v2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/battis/bootstrapsmarty.git",
-                "reference": "16f32e7c0acbab4be38f951178e958f283a4a3d5"
+                "reference": "c95297336ca37a48f3bcbc655275996ebbd0a2f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/battis/bootstrapsmarty/zipball/16f32e7c0acbab4be38f951178e958f283a4a3d5",
-                "reference": "16f32e7c0acbab4be38f951178e958f283a4a3d5",
+                "url": "https://api.github.com/repos/battis/bootstrapsmarty/zipball/c95297336ca37a48f3bcbc655275996ebbd0a2f9",
+                "reference": "c95297336ca37a48f3bcbc655275996ebbd0a2f9",
                 "shasum": ""
             },
             "require": {
@@ -79,7 +79,7 @@
                 }
             ],
             "description": "A wrapper for Smarty to set (and maintain) defaults within a Bootstrap UI environment",
-            "time": "2016-07-26 18:02:05"
+            "time": "2016-08-01 13:10:10"
         },
         {
             "name": "battis/configxml",
@@ -771,16 +771,16 @@
         },
         {
             "name": "league/oauth2-client",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-client.git",
-                "reference": "f145fded7d61a5388e76ed720c5dce185c1d36fe"
+                "reference": "01f955b85040b41cf48885b078f7fd39a8be5411"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/f145fded7d61a5388e76ed720c5dce185c1d36fe",
-                "reference": "f145fded7d61a5388e76ed720c5dce185c1d36fe",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/01f955b85040b41cf48885b078f7fd39a8be5411",
+                "reference": "01f955b85040b41cf48885b078f7fd39a8be5411",
                 "shasum": ""
             },
             "require": {
@@ -830,7 +830,7 @@
                 "oauth2",
                 "single sign on"
             ],
-            "time": "2016-04-29 15:11:06"
+            "time": "2016-07-28 13:20:43"
         },
         {
             "name": "myclabs/php-enum",
@@ -1247,12 +1247,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/reflexive-canvas-lti.git",
-                "reference": "0c0bb21600b579547dabfb2ebe8dc285b2011051"
+                "reference": "6282241595a0675bbeb4a5fcfc6e8871ec6853ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/0c0bb21600b579547dabfb2ebe8dc285b2011051",
-                "reference": "0c0bb21600b579547dabfb2ebe8dc285b2011051",
+                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/6282241595a0675bbeb4a5fcfc6e8871ec6853ad",
+                "reference": "6282241595a0675bbeb4a5fcfc6e8871ec6853ad",
                 "shasum": ""
             },
             "require": {
@@ -1282,7 +1282,7 @@
                 }
             ],
             "description": "LTI tool provider class that includes the \"reflexive\" reach back into Canvas via the API",
-            "time": "2016-07-26 18:39:58"
+            "time": "2016-08-01 13:25:20"
         },
         {
             "name": "smtech/stmarks-colors",
@@ -1323,19 +1323,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-reflexive-canvas-lti.git",
-                "reference": "3c40f1003a86eb776ebdf2da19b0ef5d2d76bee6"
+                "reference": "06497222d29efbcdb89b6f053e92ce18ded8142d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/3c40f1003a86eb776ebdf2da19b0ef5d2d76bee6",
-                "reference": "3c40f1003a86eb776ebdf2da19b0ef5d2d76bee6",
+                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/06497222d29efbcdb89b6f053e92ce18ded8142d",
+                "reference": "06497222d29efbcdb89b6f053e92ce18ded8142d",
                 "shasum": ""
             },
             "require": {
                 "battis/data-utilities": "~0.1",
                 "battis/simplecache": "~1.0",
                 "smtech/reflexive-canvas-lti": "~1.0",
-                "smtech/stmarkssmarty": "~0.5"
+                "smtech/stmarkssmarty": "~1.0"
             },
             "type": "library",
             "autoload": {
@@ -1354,24 +1354,25 @@
                 }
             ],
             "description": "A toolbox for managing LTI authentication and tool provider development (with St. Mark's templating)",
-            "time": "2016-07-27 17:29:56"
+            "time": "2016-08-01 15:10:04"
         },
         {
             "name": "smtech/stmarkssmarty",
-            "version": "v0.5.1",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-bootstrapsmarty.git",
-                "reference": "6339b88ffa26e506bf8e750fa401635427a5a300"
+                "reference": "e481110eed523a1c6dc3e1a8d152785ab909cfc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-bootstrapsmarty/zipball/6339b88ffa26e506bf8e750fa401635427a5a300",
-                "reference": "6339b88ffa26e506bf8e750fa401635427a5a300",
+                "url": "https://api.github.com/repos/smtech/stmarks-bootstrapsmarty/zipball/e481110eed523a1c6dc3e1a8d152785ab909cfc9",
+                "reference": "e481110eed523a1c6dc3e1a8d152785ab909cfc9",
                 "shasum": ""
             },
             "require": {
-                "battis/bootstrapsmarty": "~1.1",
+                "battis/bootstrapsmarty": "~2.0",
+                "battis/data-utilities": "~0.1",
                 "smtech/stmarks-colors": "~1.0"
             },
             "type": "library",
@@ -1391,7 +1392,7 @@
                 }
             ],
             "description": "A standard Smarty install for St. Mark's projects",
-            "time": "2016-07-25 03:42:31"
+            "time": "2016-08-01 13:20:55"
         },
         {
             "name": "spvsoftwareproducts/LTI_Tool_Provider",

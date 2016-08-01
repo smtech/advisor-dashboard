@@ -11,7 +11,6 @@ define('CONFIG_FILE', __DIR__ . '/config.xml');
 define('CANVAS_INSTANCE_URL', 'canvas_instance_url');
 define('ACCOUNT_ID', 'account_id');
 define('COURSE_ID', 'course_id');
-define('OAUTH_STATE', 'oauth_state');
 
 session_start();
 
@@ -20,7 +19,7 @@ if (empty($_SESSION[Toolbox::class])) {
 	$_SESSION[Toolbox::class] = Toolbox::fromConfiguration(CONFIG_FILE);
 }
 $toolbox =& $_SESSION[Toolbox::class];
-$toolbox->smarty_addTemplateDir(__DIR__ . '/templates', basename(__DIR__));
+$toolbox->getSmarty()->prependTemplateDir(__DIR__ . '/templates', basename(__DIR__));
 $toolbox->smarty_assign('category', DataUtilities::titleCase(preg_replace('/[\-_]+/', ' ', basename(__DIR__))));
 
 /* set the Tool Consumer's instance URL, if present */

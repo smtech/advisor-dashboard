@@ -62,7 +62,11 @@ Chart.defaults.global.scaleBeginAtZero = true;
 				$medians[] = normalize($data['median']);
 				$first_quartiles[] = normalize($data['first_quartile']);
 				$third_quartiles[] = normalize($data['third_quartile']);
-				$scores[] = normalize($data['submission']['score']);
+				if (empty($data['submission'])) {
+					$scores[] = '""'; /* some assignments may not have grades */
+				} else {
+					$scores[] = normalize($data['submission']['score']);
+				}
 			}
 		}
 	?>
@@ -116,6 +120,8 @@ Chart.defaults.global.scaleBeginAtZero = true;
 
 	// Get context with jQuery - using jQuery's .get() method.
 	var ctx = $("#course_<?= $course ?>").get(0).getContext("2d");
+
+	// TODO detect empty datasets and remove canvas and replace with message
 
 	// This will get the first returned node in the jQuery collection.
 	var chart = new Chart(ctx).Line(data, options);
