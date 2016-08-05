@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a27f893cdcf19f89091e781361f1bbbf",
-    "content-hash": "4f547057f1ef27e1ccebb76122a06d71",
+    "hash": "9dc2ab12ca3f757787f8ac019c11b3b6",
+    "content-hash": "e2d5cf18f33cc5a63e47022373c45b98",
     "packages": [
         {
             "name": "battis/appmetadata",
@@ -315,16 +315,16 @@
         },
         {
             "name": "bower-asset/bootstrap-datepicker-1.x",
-            "version": "v1.6.1",
+            "version": "v1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eternicode/bootstrap-datepicker.git",
-                "reference": "f4df9ac6679b15b12157324c556e0da1c628af6e"
+                "reference": "0735231af58a6f4e0f576978c6d5cd0c2247c6d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eternicode/bootstrap-datepicker/zipball/f4df9ac6679b15b12157324c556e0da1c628af6e",
-                "reference": "f4df9ac6679b15b12157324c556e0da1c628af6e",
+                "url": "https://api.github.com/repos/eternicode/bootstrap-datepicker/zipball/0735231af58a6f4e0f576978c6d5cd0c2247c6d8",
+                "reference": "0735231af58a6f4e0f576978c6d5cd0c2247c6d8",
                 "shasum": ""
             },
             "require": {
@@ -449,16 +449,16 @@
         },
         {
             "name": "fxp/composer-asset-plugin",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fxpio/composer-asset-plugin.git",
-                "reference": "8d74bc7c714aadbda54622c216b2e7bf786595cb"
+                "reference": "d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/8d74bc7c714aadbda54622c216b2e7bf786595cb",
-                "reference": "8d74bc7c714aadbda54622c216b2e7bf786595cb",
+                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d",
+                "reference": "d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d",
                 "shasum": ""
             },
             "require": {
@@ -501,7 +501,7 @@
                 "npm",
                 "package"
             ],
-            "time": "2016-07-01 12:04:16"
+            "time": "2016-08-03 07:44:07"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -834,16 +834,16 @@
         },
         {
             "name": "myclabs/php-enum",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/php-enum.git",
-                "reference": "07da9d1a7469941ae05b046193fac4c83bdb0d7e"
+                "reference": "e83e992a5b5a0858ef7adbc9239a749d71fb6979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/07da9d1a7469941ae05b046193fac4c83bdb0d7e",
-                "reference": "07da9d1a7469941ae05b046193fac4c83bdb0d7e",
+                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/e83e992a5b5a0858ef7adbc9239a749d71fb6979",
+                "reference": "e83e992a5b5a0858ef7adbc9239a749d71fb6979",
                 "shasum": ""
             },
             "require": {
@@ -874,7 +874,7 @@
             "keywords": [
                 "enum"
             ],
-            "time": "2015-07-22 16:14:03"
+            "time": "2016-08-01 15:48:47"
         },
         {
             "name": "pear/log",
@@ -1319,21 +1319,22 @@
         },
         {
             "name": "smtech/stmarks-reflexive-canvas-lti",
-            "version": "v0.1",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-reflexive-canvas-lti.git",
-                "reference": "06497222d29efbcdb89b6f053e92ce18ded8142d"
+                "reference": "292025b07e79ab488e92fd565846cb0142fa0595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/06497222d29efbcdb89b6f053e92ce18ded8142d",
-                "reference": "06497222d29efbcdb89b6f053e92ce18ded8142d",
+                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/292025b07e79ab488e92fd565846cb0142fa0595",
+                "reference": "292025b07e79ab488e92fd565846cb0142fa0595",
                 "shasum": ""
             },
             "require": {
                 "battis/data-utilities": "~0.1",
                 "battis/simplecache": "~1.0",
+                "smtech/oauth2-canvaslms": "~1.0",
                 "smtech/reflexive-canvas-lti": "~1.0",
                 "smtech/stmarkssmarty": "~1.0"
             },
@@ -1354,7 +1355,7 @@
                 }
             ],
             "description": "A toolbox for managing LTI authentication and tool provider development (with St. Mark's templating)",
-            "time": "2016-08-01 15:10:04"
+            "time": "2016-08-05 03:10:32"
         },
         {
             "name": "smtech/stmarkssmarty",

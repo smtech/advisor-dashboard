@@ -29,8 +29,7 @@
         }
     ],
 	"require": {
-		"smtech/stmarks-reflexive-canvas-lti": "~0.1",
-		"smtech/oauth2-canvaslms": "~1.0",
+		"smtech/stmarks-reflexive-canvas-lti": "~0.2",
 		"battis/data-utilities": "~0.1",
 		"roderik/pwgen-php": "~0.1"
 	},
