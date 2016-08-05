@@ -16,15 +16,14 @@ session_start();
 
 /* prepare the toolbox */
 if (empty($_SESSION[Toolbox::class])) {
-	$_SESSION[Toolbox::class] = Toolbox::fromConfiguration(CONFIG_FILE);
+    $_SESSION[Toolbox::class] = Toolbox::fromConfiguration(CONFIG_FILE);
 }
 $toolbox =& $_SESSION[Toolbox::class];
-$toolbox->getSmarty()->prependTemplateDir(__DIR__ . '/templates', basename(__DIR__));
 $toolbox->smarty_assign('category', DataUtilities::titleCase(preg_replace('/[\-_]+/', ' ', basename(__DIR__))));
 
 /* set the Tool Consumer's instance URL, if present */
 if (empty($_SESSION[CANVAS_INSTANCE_URL]) &&
-	!empty($_SESSION[ToolProvider::class]['canvas']['api_domain'])
+    !empty($_SESSION[ToolProvider::class]['canvas']['api_domain'])
 ) {
-	$_SESSION[CANVAS_INSTANCE_URL] = 'https://' . $_SESSION[ToolProvider::class]['canvas']['api_domain'];
+    $_SESSION[CANVAS_INSTANCE_URL] = 'https://' . $_SESSION[ToolProvider::class]['canvas']['api_domain'];
 }
