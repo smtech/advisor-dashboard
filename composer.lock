@@ -315,16 +315,16 @@
         },
         {
             "name": "bower-asset/bootstrap-datepicker-1.x",
-            "version": "v1.6.2",
+            "version": "v1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eternicode/bootstrap-datepicker.git",
-                "reference": "0735231af58a6f4e0f576978c6d5cd0c2247c6d8"
+                "reference": "42940960ffaf6c727c9f2d64a6175be87516986e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eternicode/bootstrap-datepicker/zipball/0735231af58a6f4e0f576978c6d5cd0c2247c6d8",
-                "reference": "0735231af58a6f4e0f576978c6d5cd0c2247c6d8",
+                "url": "https://api.github.com/repos/eternicode/bootstrap-datepicker/zipball/42940960ffaf6c727c9f2d64a6175be87516986e",
+                "reference": "42940960ffaf6c727c9f2d64a6175be87516986e",
                 "shasum": ""
             },
             "require": {
@@ -986,16 +986,16 @@
         },
         {
             "name": "psr/http-message",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
                 "shasum": ""
             },
             "require": {
@@ -1023,6 +1023,7 @@
                 }
             ],
             "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
             "keywords": [
                 "http",
                 "http-message",
@@ -1031,7 +1032,7 @@
                 "request",
                 "response"
             ],
-            "time": "2015-05-04 20:22:00"
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "roderik/pwgen-php",
@@ -1079,16 +1080,16 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.29",
+            "version": "v3.1.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e"
+                "reference": "ed2b7f1146cfda13df1eea8a5f707a1b771b6e7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
-                "reference": "35480f10e7ce9b0fdaf23d3799d7b79463919b1e",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/ed2b7f1146cfda13df1eea8a5f707a1b771b6e7e",
+                "reference": "ed2b7f1146cfda13df1eea8a5f707a1b771b6e7e",
                 "shasum": ""
             },
             "require": {
@@ -1130,20 +1131,20 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-12-21 01:57:06"
+            "time": "2016-08-07 18:46:49"
         },
         {
             "name": "smtech/canvaspest",
-            "version": "v1.1.4",
+            "version": "v1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/canvaspest.git",
-                "reference": "c1a5b7901e5d637afd05158541b1090d70027ed4"
+                "reference": "677167d0f7dcfdc1360c7147ad406c11c9a82321"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/canvaspest/zipball/c1a5b7901e5d637afd05158541b1090d70027ed4",
-                "reference": "c1a5b7901e5d637afd05158541b1090d70027ed4",
+                "url": "https://api.github.com/repos/smtech/canvaspest/zipball/677167d0f7dcfdc1360c7147ad406c11c9a82321",
+                "reference": "677167d0f7dcfdc1360c7147ad406c11c9a82321",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1167,7 @@
                 }
             ],
             "description": "An extension of Pest to make RESTful queries to the Instructure Canvas API",
-            "time": "2016-07-25 02:29:48"
+            "time": "2016-08-05 16:39:04"
         },
         {
             "name": "smtech/lti-configuration-xml",
@@ -1243,16 +1244,16 @@
         },
         {
             "name": "smtech/reflexive-canvas-lti",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/reflexive-canvas-lti.git",
-                "reference": "6282241595a0675bbeb4a5fcfc6e8871ec6853ad"
+                "reference": "06d0a88fffccf4863a98ce255ae7b6850b05e9ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/6282241595a0675bbeb4a5fcfc6e8871ec6853ad",
-                "reference": "6282241595a0675bbeb4a5fcfc6e8871ec6853ad",
+                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/06d0a88fffccf4863a98ce255ae7b6850b05e9ce",
+                "reference": "06d0a88fffccf4863a98ce255ae7b6850b05e9ce",
                 "shasum": ""
             },
             "require": {
@@ -1282,7 +1283,7 @@
                 }
             ],
             "description": "LTI tool provider class that includes the \"reflexive\" reach back into Canvas via the API",
-            "time": "2016-08-01 13:25:20"
+            "time": "2016-08-11 19:15:46"
         },
         {
             "name": "smtech/stmarks-colors",
@@ -1319,16 +1320,16 @@
         },
         {
             "name": "smtech/stmarks-reflexive-canvas-lti",
-            "version": "v0.2",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-reflexive-canvas-lti.git",
-                "reference": "292025b07e79ab488e92fd565846cb0142fa0595"
+                "reference": "d75bef5b88243968fc0915e058693d7005514892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/292025b07e79ab488e92fd565846cb0142fa0595",
-                "reference": "292025b07e79ab488e92fd565846cb0142fa0595",
+                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/d75bef5b88243968fc0915e058693d7005514892",
+                "reference": "d75bef5b88243968fc0915e058693d7005514892",
                 "shasum": ""
             },
             "require": {
@@ -1355,7 +1356,7 @@
                 }
             ],
             "description": "A toolbox for managing LTI authentication and tool provider development (with St. Mark's templating)",
-            "time": "2016-08-05 03:10:32"
+            "time": "2016-08-11 20:26:11"
         },
         {
             "name": "smtech/stmarkssmarty",
