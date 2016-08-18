@@ -1,4 +1,4 @@
 <?php
 
-header ('Location: relative-grades.php');
+header('Location: relative-grades.php');
 exit;
