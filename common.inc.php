@@ -4,7 +4,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use smtech\AdvisorDashboard\Toolbox;
 use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
-use smtech\ReflexiveCanvasLTI\Exception\ConfigurationException;
 use Battis\DataUtilities;
 
 define('CONFIG_FILE', __DIR__ . '/config.xml');
@@ -18,7 +17,7 @@ define('COURSE_ID', 'course_id');
 if (empty($_SESSION[Toolbox::class])) {
     $_SESSION[Toolbox::class] = Toolbox::fromConfiguration(CONFIG_FILE);
 }
-$toolbox =& $_SESSION[Toolbox::class];
+$toolbox = & $_SESSION[Toolbox::class];
 $toolbox->smarty_assign('category', DataUtilities::titleCase(preg_replace('/[\-_]+/', ' ', basename(__DIR__))));
 
 /* set the Tool Consumer's instance URL, if present */

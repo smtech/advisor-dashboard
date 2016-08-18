@@ -3,7 +3,6 @@
 namespace smtech\AdvisorDashboard;
 
 use smtech\LTI\Configuration\Option;
-use Battis\DataUtilities;
 use Battis\HierarchicalSimpleCache;
 
 /**

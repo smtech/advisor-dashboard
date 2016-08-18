@@ -31,7 +31,7 @@ switch ($step) {
                         'course[course_code]' => $courseName
                     ]);
                     $sections = $toolbox->api_get("courses/{$course['id']}/sections");
-                    foreach($sections as $section) {
+                    foreach ($sections as $section) {
                         if ($section['name'] == $course['name']) {
                             $toolbox->api_put("sections/{$sections[0]['id']}", [
                                 'course_section[name]' => $courseName

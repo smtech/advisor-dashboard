@@ -64,7 +64,7 @@ $toolbox->cache_pushKey(basename(__FILE__, '.php')); {
             $created = 0;
             $reset = 0;
 
-            foreach($advisories as $advisory) {
+            foreach ($advisories as $advisory) {
                 /* cache the teacher */
                 $advisors = $toolbox->api_get("courses/{$advisory['id']}/users", [
                     'enrollment_role' => 'TeacherEnrollment'
@@ -75,7 +75,7 @@ $toolbox->cache_pushKey(basename(__FILE__, '.php')); {
                 } else {
                     $toolbox->smarty_addMessage(
                         "{$advisory['name']}",
-                        "No teacher was found in <a target=\"_parent\" href=\"" . $_SESSION[CANVAS_INSTANCE_URL]. "/courses/{$advisory['id']}\">this advisory</a> and it was skipped.",
+                        "No teacher was found in <a target=\"_parent\" href=\"" . $_SESSION[CANVAS_INSTANCE_URL] . "/courses/{$advisory['id']}\">this advisory</a> and it was skipped.",
                         NotificationMessage::ERROR
                     );
                     break;
@@ -87,7 +87,7 @@ $toolbox->cache_pushKey(basename(__FILE__, '.php')); {
                     'enrollment_role' => 'StudentEnrollment'
                 ]);
 
-                foreach($advisees as $advisee) {
+                foreach ($advisees as $advisee) {
 
                     /* generate what the advisor account info should be */
                     $observer = [
@@ -125,7 +125,7 @@ $toolbox->cache_pushKey(basename(__FILE__, '.php')); {
                         $communicationChannels = $toolbox->api_get("users/{$existing['id']}/communication_channels");
                         $emailExists = false;
                         $channelsToDelete = [];
-                        foreach($communicationChannels as $communicationChannel) {
+                        foreach ($communicationChannels as $communicationChannel) {
                             if ($communicationChannel['address'] != $observer['email']) {
                                 $channelsToDelete[] = $communicationChannel['id'];
                             } else {
@@ -140,7 +140,7 @@ $toolbox->cache_pushKey(basename(__FILE__, '.php')); {
                                 'position' => 1
                             ]);
                         }
-                        foreach($channelsToDelete as $channelToDelete) {
+                        foreach ($channelsToDelete as $channelToDelete) {
                             $toolbox->api_delete("users/{$existing['id']}/communication_channels/{$channelToDelete}");
                         }
 
