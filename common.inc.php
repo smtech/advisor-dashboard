@@ -12,7 +12,7 @@ define('CANVAS_INSTANCE_URL', 'canvas_instance_url');
 define('ACCOUNT_ID', 'account_id');
 define('COURSE_ID', 'course_id');
 
-session_start();
+@session_start(); // TODO I don't feel good about suppressing warnings
 
 /* prepare the toolbox */
 if (empty($_SESSION[Toolbox::class])) {

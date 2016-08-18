@@ -31,7 +31,8 @@
 	"require": {
 		"smtech/stmarks-reflexive-canvas-lti": "~0.2",
 		"battis/data-utilities": "~0.1",
-		"roderik/pwgen-php": "~0.1"
+		"roderik/pwgen-php": "~0.1",
+		"php": ">=5.6"
 	},
 	"autoload": {
 		"psr-4": {
