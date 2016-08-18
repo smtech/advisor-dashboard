@@ -1,5 +1,7 @@
 # Advisor Dashboard LTI
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smtech/reflexive-canvas-lti/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smtech/reflexive-canvas-lti/?branch=master)
+
 This LTI is explicitly inspired by the University of Michigan presentation at InstructureCon 2015:
 
 [![Using Canvas APIs to Serve a Campus Early Warning System](http://img.youtube.com/vi/uqJ2hwsB92M/0.jpg)](https://www.youtube.com/watch?v=uqJ2hwsB92M)
@@ -56,12 +58,12 @@ Additionally, all of the LTI interactions will run more smoothly if you are host
 ## Install
 
   1. Clone the repository (command line below, but you can use your favorite GUI GitHub client instead).
-  
+
   ```BASH
   git clone https://github.com/smtech/advisor-dashboard.git
   ```
   2. Install dependencies (the `--prefer-dist` flag indicates that you want the distribution version of the dependency packages, excluding tests, examples, documentation, etc.)
-  
+
   ```BASH
   cd advisor-dashboard
   composer install --prefer-dist
@@ -87,9 +89,9 @@ Additionally, all of the LTI interactions will run more smoothly if you are host
   6. Create a Tool Consumer. The name is human-readable and just needs to mean something to you. The key and secret are automagically generated, but you can change them to whatever you want.
 
   7. Create an app placement in Canvas in your account of advisory courses. Use the "by URL" app configuration using the URL provided on the consumers page (and the key and secret for the consumer you just created).
-  
+
   8. Open up the account navigation placement as an admin and run the Create Advisor-Observers script.
-  
+
   _**Caveat Emptor:** This will create a duplicate user for every active student in your system. This is desired behavior at St. Mark's but may not be at your school! If you do not run this script, the relative grades tab will work, but the observers tab will crash. These duplicate users are the observers, one per student._
 
 

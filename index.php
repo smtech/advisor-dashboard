@@ -24,14 +24,7 @@ if ($action) {
 
 /* authenticate LTI launch request, if present */
 if ($toolbox->lti_isLaunching()) {
-    /* http://stackoverflow.com/a/14329752 */
-    // session_start(); // already called in common.inc.php
-    @session_destroy(); // TODO I don't feel good about suppressing errors
-    @session_unset();
-    @session_start();
-    @session_regenerate_id(true);
-    $_SESSION[Toolbox::class] =& $toolbox;
-    session_write_close();
+    $toolbox->resetSession();
     $toolbox->lti_authenticate();
     exit;
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3b227606071b978ba4ca73697fd19311",
+    "hash": "27aad51eddc768d2267c283dcde94cca",
     "content-hash": "cd7b5c4a536de81b09ed51c903756c67",
     "packages": [
         {
@@ -1244,16 +1244,16 @@
         },
         {
             "name": "smtech/reflexive-canvas-lti",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/reflexive-canvas-lti.git",
-                "reference": "06d0a88fffccf4863a98ce255ae7b6850b05e9ce"
+                "reference": "d3f533ca156a2a45392072ca1243ae2ce727e478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/06d0a88fffccf4863a98ce255ae7b6850b05e9ce",
-                "reference": "06d0a88fffccf4863a98ce255ae7b6850b05e9ce",
+                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/d3f533ca156a2a45392072ca1243ae2ce727e478",
+                "reference": "d3f533ca156a2a45392072ca1243ae2ce727e478",
                 "shasum": ""
             },
             "require": {
@@ -1262,6 +1262,7 @@
                 "battis/data-utilities": "~0.1",
                 "myclabs/php-enum": "~1.0",
                 "pear/log": "~1.0",
+                "php": ">=5.6",
                 "smtech/canvaspest": "~1.0",
                 "smtech/lti-configuration-xml": "~1.0",
                 "spvsoftwareproducts/lti_tool_provider": "~2.5"
@@ -1283,7 +1284,7 @@
                 }
             ],
             "description": "LTI tool provider class that includes the \"reflexive\" reach back into Canvas via the API",
-            "time": "2016-08-11 19:15:46"
+            "time": "2016-08-18 12:44:01"
         },
         {
             "name": "smtech/stmarks-colors",
@@ -1320,16 +1321,16 @@
         },
         {
             "name": "smtech/stmarks-reflexive-canvas-lti",
-            "version": "v0.2.1",
+            "version": "v0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/stmarks-reflexive-canvas-lti.git",
-                "reference": "d75bef5b88243968fc0915e058693d7005514892"
+                "reference": "c0db4db6063e6f159a9b6a9344f7d04ee5f4225b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/d75bef5b88243968fc0915e058693d7005514892",
-                "reference": "d75bef5b88243968fc0915e058693d7005514892",
+                "url": "https://api.github.com/repos/smtech/stmarks-reflexive-canvas-lti/zipball/c0db4db6063e6f159a9b6a9344f7d04ee5f4225b",
+                "reference": "c0db4db6063e6f159a9b6a9344f7d04ee5f4225b",
                 "shasum": ""
             },
             "require": {
@@ -1356,7 +1357,7 @@
                 }
             ],
             "description": "A toolbox for managing LTI authentication and tool provider development (with St. Mark's templating)",
-            "time": "2016-08-11 20:26:11"
+            "time": "2016-08-18 12:47:12"
         },
         {
             "name": "smtech/stmarkssmarty",

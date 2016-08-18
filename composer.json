@@ -1,7 +1,7 @@
 {
 	"name": "smtech/advisor-dashboard",
 	"description": "A dashboard for advisors in Canvas",
-	"license": "LGPL-3.0",
+	"license": "GPL-3.0",
 	"config": {
         "secure-http": false
     },
