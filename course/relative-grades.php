@@ -75,7 +75,7 @@ $toolbox->smarty_assign([
  *     relative-grades.tpl file
  */
 $toolbox->getSmarty()->addScript(
-    DataUtilities::URLfromPath(__DIR__ . '/../js/Chart.min.js')
+    DataUtilities::URLfromPath(__DIR__ . '/../vendor/npm-asset/chart.js/dist/Chart.min.js')
 );
 $toolbox->getSmarty()->addScript(
     DataUtilities::URLfromPath(__DIR__ . '/../js/relative-grades.js.php') . "?advisee={$advisee}"
