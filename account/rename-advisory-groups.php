@@ -10,7 +10,6 @@ define('STEP_RENAME', 2);
 $step = (empty($_REQUEST['step']) ? STEP_INSTRUCTIONS : $_REQUEST['step']);
 
 switch ($step) {
-
     case STEP_RENAME:
         try {
             $updated = 0;
@@ -44,7 +43,7 @@ switch ($step) {
                 }
             }
         } catch (Exception $e) {
-            $toolbox->smarty_addMessage('Error ' . $e->getCode(), $e->getMessage(), NotificationMessage::ERROR);
+            $toolbox->smarty_addMessage('Error ' . $e->getCode(), $e->getMessage(), NotificationMessage::DANGER);
         }
         $courses = $toolbox->api_get("accounts/{$_REQUEST['account']}/courses", [
             'enrollment_term_id' => $_REQUEST['term'],
@@ -55,8 +54,10 @@ switch ($step) {
         $toolbox->smarty_addMessage(
             'Renamed advisory courses',
             "$updated courses were renamed, and $unchanged were left unchanged.",
-            NotificationMessage::GOOD
+            NotificationMessage::SUCCESS
         );
+
+        /* fall through into STEP_INSTRUCTIONS */
 
     case STEP_INSTRUCTIONS:
     default:

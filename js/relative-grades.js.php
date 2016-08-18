@@ -20,11 +20,12 @@ define('SCORE_FILL', TRANSPARENT);
 
 
 $points = 0;
-function normalize($numerator, $denominator = false) {
-	global $points;
-	$denominator = ($denominator !== false ? $denominator : $points);
-	$points = $denominator;
-	return min(100, $numerator / $denominator * 100);
+function normalize($numerator, $denominator = false)
+{
+    global $points;
+    $denominator = ($denominator !== false ? $denominator : $points);
+    $points = $denominator;
+    return min(100, $numerator / $denominator * 100);
 }
 
 header('Content-Type: application/javascript');
@@ -34,7 +35,7 @@ $toolbox->cache_pushKey($_REQUEST['advisee']);
 
 $analytics = $toolbox->cache_get('analytics');
 if ($analytics === false) {
-	exit;
+    exit;
 }
 
 ?>
@@ -43,87 +44,88 @@ Chart.defaults.global.showTooltips = false;
 Chart.defaults.global.scaleShowLabels = false;
 Chart.defaults.global.scaleBeginAtZero = true;
 
-<?php foreach ($analytics as $course => $analytic): ?>
+<?php foreach ($analytics as $course => $analytic) : ?>
 
-	<?php
+    <?php
 
-		$labels = array();
-		$max_scores = array();
-		$min_scores = array();
-		$medians = array();
-		$first_quartiles = array();
-		$third_quartiles = array();
-		$scores = array();
-		foreach ($analytic as $data) {
-			if ($data['points_possible'] > 0 && $data['max_score'] > 0) {
-				$labels[] = ''; // htmlentities($data['title']);
-				$max_scores[] = normalize($data['max_score'], $data['points_possible']);
-				$min_scores[] = normalize($data['min_score']);
-				$medians[] = normalize($data['median']);
-				$first_quartiles[] = normalize($data['first_quartile']);
-				$third_quartiles[] = normalize($data['third_quartile']);
-				if (empty($data['submission'])) {
-					$scores[] = '""'; /* some assignments may not have grades */
-				} else {
-					$scores[] = normalize($data['submission']['score']);
-				}
-			}
-		}
-	?>
+    $labels = array();
+    $max_scores = array();
+    $min_scores = array();
+    $medians = array();
+    $first_quartiles = array();
+    $third_quartiles = array();
+    $scores = array();
+    foreach ($analytic as $data) {
+        if ($data['points_possible'] > 0 && $data['max_score'] > 0) {
+            $labels[] = htmlentities($data['title']);
+            $max_scores[] = normalize($data['max_score'], $data['points_possible']);
+            $min_scores[] = normalize($data['min_score']);
+            $medians[] = normalize($data['median']);
+            $first_quartiles[] = normalize($data['first_quartile']);
+            $third_quartiles[] = normalize($data['third_quartile']);
+            if (empty($data['submission'])) {
+                $scores[] = '""'; /* some assignments may not have grades */
+            } else {
+                $scores[] = normalize($data['submission']['score']);
+            }
+        }
+    }
 
-	var data = {
-		labels: [<?= '"' . implode('", "', $labels) . '"' ?>],
-		datasets: [
-			{
-				label: "High Score",
-				fillColor: "<?= HIGH_FILL ?>",
-				strokeColor: "<?= HIGH_STROKE ?>",
-				data: [<?= implode(', ', $max_scores) ?>]
-			},
-			{
-				label: "Third Quartile",
-				fillColor: "<?= THIRD_QUARTILE_FILL ?>",
-				strokeColor: "<?= THIRD_QUARTILE_STROKE ?>",
-				data: [<?= implode(', ', $third_quartiles) ?>]
-			},
-			{
-				label: "Median",
-				fillColor: "<?= MEDIAN_FILL ?>",
-				strokeColor: "<?= MEDIAN_STROKE ?>",
-				data: [<?= implode(', ', $medians) ?>]
-			},
-			{
-				label: "First Quartile",
-				fillColor: "<?= FIRST_QUARTILE_FILL ?>",
-				strokeColor: "<?= FIRST_QUARTILE_STROKE ?>",
-				data: [<?= implode(', ', $first_quartiles) ?>]
-			},
-			{
-				label: "Low Score",
-				fillColor: "<?= LOW_FILL ?>",
-				strokeColor: "<?= LOW_STROKE ?>",
-				data: [<?= implode(', ', $min_scores) ?>]
-			},
-			{
-				label: "Score",
-				fillColor: "<?= SCORE_FILL ?>",
-				strokeColor: "<?= SCORE_STROKE ?>",
-				data: [<?= implode(', ', $scores) ?>]
-			}
-		]
-	};
+    ?>
 
-	var options = {
-		pointDot: false,
-		scaleShowGridLines: false
-	};
+    var data = {
+        labels: [<?= '"' . implode('", "', $labels) . '"' ?>],
+        datasets: [
+            {
+                label: "High Score",
+                fillColor: "<?= HIGH_FILL ?>",
+                strokeColor: "<?= HIGH_STROKE ?>",
+                data: [<?= implode(', ', $max_scores) ?>]
+            },
+            {
+                label: "Third Quartile",
+                fillColor: "<?= THIRD_QUARTILE_FILL ?>",
+                strokeColor: "<?= THIRD_QUARTILE_STROKE ?>",
+                data: [<?= implode(', ', $third_quartiles) ?>]
+            },
+            {
+                label: "Median",
+                fillColor: "<?= MEDIAN_FILL ?>",
+                strokeColor: "<?= MEDIAN_STROKE ?>",
+                data: [<?= implode(', ', $medians) ?>]
+            },
+            {
+                label: "First Quartile",
+                fillColor: "<?= FIRST_QUARTILE_FILL ?>",
+                strokeColor: "<?= FIRST_QUARTILE_STROKE ?>",
+                data: [<?= implode(', ', $first_quartiles) ?>]
+            },
+            {
+                label: "Low Score",
+                fillColor: "<?= LOW_FILL ?>",
+                strokeColor: "<?= LOW_STROKE ?>",
+                data: [<?= implode(', ', $min_scores) ?>]
+            },
+            {
+                label: "Score",
+                fillColor: "<?= SCORE_FILL ?>",
+                strokeColor: "<?= SCORE_STROKE ?>",
+                data: [<?= implode(', ', $scores) ?>]
+            }
+        ]
+    };
 
-	// Get context with jQuery - using jQuery's .get() method.
-	var ctx = $("#course_<?= $course ?>").get(0).getContext("2d");
+    var options = {
+        pointDot: false,
+        scaleShowGridLines: false
+    };
 
-	// TODO detect empty datasets and remove canvas and replace with message
+    // Get context with jQuery - using jQuery's .get() method.
+    var ctx = $("#course_<?= $course ?>").get(0).getContext("2d");
 
-	// This will get the first returned node in the jQuery collection.
-	var chart = new Chart(ctx).Line(data, options);
+    // TODO detect empty datasets and remove canvas and replace with message
+
+    // This will get the first returned node in the jQuery collection.
+    var chart = new Chart(ctx).Line(data, options);
 
 <?php endforeach; ?>

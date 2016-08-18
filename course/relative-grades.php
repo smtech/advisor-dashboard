@@ -6,7 +6,8 @@ use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
 use Battis\DataUtilities;
 
 $accounts = $toolbox->getAccountList();
-function isAcademic($account) {
+function isAcademic($account)
+{
     global $accounts;
     if ($account == 132) { // FIXME really, hard-coded values? Really?
         return true;
@@ -24,11 +25,9 @@ $terms = $toolbox->getTermList();
 
 $advisees = $toolbox->cache_get('advisees');
 if ($advisees === false) {
-    $advisees = $toolbox->api_get(
-        'courses/' . $_SESSION[COURSE_ID] . '/enrollments', [
-            'role[]' => 'StudentEnrollment' // FIXME this shouldn't require the faux-array
-        ]
-    );
+    $advisees = $toolbox->api_get('courses/' . $_SESSION[COURSE_ID] . '/enrollments', [
+        'role[]' => 'StudentEnrollment' // FIXME this shouldn't require the faux-array
+    ]);
     $toolbox->cache_set('advisees', $advisees);
 }
 
@@ -42,11 +41,8 @@ if ($courses === false) {
 
     $courses = [];
     foreach ($allCourses as $course) {
-        if (
-            !empty($course['account_id']) &&
-            isAcademic($course['account_id'])
-        ) {
-
+        if (!empty($course['account_id']) &&
+            isAcademic($course['account_id'])) {
             $courses[$course['id']] = $course;
         }
     }
@@ -78,7 +74,11 @@ $toolbox->smarty_assign([
  * FIXME unclear why the post-bootstrap-scripts block isn't working in the
  *     relative-grades.tpl file
  */
-$toolbox->getSmarty()->addScript(DataUtilities::URLfromPath(__DIR__ . '/../js/Chart.min.js'));
-$toolbox->getSmarty()->addScript(DataUtilities::URLfromPath(__DIR__ . '/../js/relative-grades.js.php') . "?advisee={$advisee}");
+$toolbox->getSmarty()->addScript(
+    DataUtilities::URLfromPath(__DIR__ . '/../js/Chart.min.js')
+);
+$toolbox->getSmarty()->addScript(
+    DataUtilities::URLfromPath(__DIR__ . '/../js/relative-grades.js.php') . "?advisee={$advisee}"
+);
 
 $toolbox->smarty_display('relative-grades.tpl');

@@ -1,5 +1,3 @@
-.htpasswd
-config.xml
-/logs/*.log
 /vendor/
 /phpdoc/
+config.xml

@@ -22,6 +22,9 @@ if (empty($firstStudent)) {
 }
 
 /* generate faculty journal URL for use by `smtech/canvashack-plugin-faculty-journal` */
-$toolbox->smarty_assign('facultyJournal', $_SESSION[CANVAS_INSTANCE_URL] . "/users/$firstStudent/user_notes?course_id=" . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '&course_name=Advisory%20Group');
+$toolbox->smarty_assign([
+    'facultyJournal' => $_SESSION[CANVAS_INSTANCE_URL] . "/users/$firstStudent/user_notes?course_id=" .
+        $_SESSION[ToolProvider::class]['canvas']['course_id'] . '&course_name=Advisory%20Group'
+]);
 
 $toolbox->cache_popKey();

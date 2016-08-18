@@ -45,7 +45,7 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
      *
      * @return array
      **/
-    function getAccountList()
+    public function getAccountList()
     {
         $cache = new HierarchicalSimpleCache($this->getMySQL(), __CLASS__);
 
@@ -72,7 +72,7 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
      *
      * @return array
      **/
-    function getTermList()
+    public function getTermList()
     {
         $cache = new HierarchicalSimpleCache($this->getMySQL(), __CLASS__);
 
