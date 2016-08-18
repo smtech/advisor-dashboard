@@ -11,14 +11,14 @@ $toolbox->cache_pushKey($_SESSION[ToolProvider::class]['canvas']['course_id']);
 /* get and cache ID of first student in the advisory group */
 $firstStudent = $toolbox->cache_get('first-student');
 if (empty($firstStudent)) {
-	$enrollments = $toolbox->api_get(
-		'courses/' . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '/enrollments',
-		[
-			'role[]' => 'StudentEnrollment'
-		]
-	);
-	$firstStudent = $enrollments[0]['user']['id'];
-	$toolbox->cache_set('first-student', $firstStudent);
+    $enrollments = $toolbox->api_get(
+        'courses/' . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '/enrollments',
+        [
+            'role[]' => 'StudentEnrollment'
+        ]
+    );
+    $firstStudent = $enrollments[0]['user']['id'];
+    $toolbox->cache_set('first-student', $firstStudent);
 }
 
 /* generate faculty journal URL for use by `smtech/canvashack-plugin-faculty-journal` */

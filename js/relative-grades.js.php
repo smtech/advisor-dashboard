@@ -12,7 +12,7 @@ define('THIRD_QUARTILE_FILL', '#9ddffe'); // light blue
 define('MEDIAN_STROKE', '#fff'); // white
 define('MEDIAN_FILL', THIRD_QUARTILE_FILL);
 define('FIRST_QUARTILE_STROKE', TRANSPARENT);
-define('FIRST_QUARTILE_FILL', '#ffe399');  // light yellow
+define('FIRST_QUARTILE_FILL', '#ffe399'); // light yellow
 define('LOW_STROKE', '#ff3f0c'); // medium red
 define('LOW_FILL', '#fff'); // white
 define('SCORE_STROKE', '#000'); // black
@@ -54,7 +54,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
 		$first_quartiles = array();
 		$third_quartiles = array();
 		$scores = array();
-		foreach($analytic as $data) {
+		foreach ($analytic as $data) {
 			if ($data['points_possible'] > 0 && $data['max_score'] > 0) {
 				$labels[] = ''; // htmlentities($data['title']);
 				$max_scores[] = normalize($data['max_score'], $data['points_possible']);
