@@ -1,6 +1,6 @@
 # Advisor Dashboard LTI
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smtech/reflexive-canvas-lti/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smtech/reflexive-canvas-lti/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smtech/advisor-dashboard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smtech/advisor-dashboard/?branch=master)
 
 This LTI is explicitly inspired by the University of Michigan presentation at InstructureCon 2015:
 
