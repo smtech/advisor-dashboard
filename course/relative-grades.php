@@ -5,6 +5,11 @@ require_once 'common.inc.php';
 use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
 use Battis\DataUtilities;
 
+if ($firstStudent === false) {
+    $toolbox->smarty_display('no-advisees.tpl');
+    exit;
+}
+
 $accounts = $toolbox->getAccountList();
 function isAcademic($account)
 {
@@ -31,7 +36,7 @@ if ($advisees === false) {
     $toolbox->cache_set('advisees', $advisees);
 }
 
-$advisee = (isset($_REQUEST['advisee']) ? $_REQUEST['advisee'] : $advisees[0]['user']['id']);
+$advisee = (isset($_REQUEST['advisee']) ? $_REQUEST['advisee'] : $firstStudent);
 
 $toolbox->cache_pushKey($advisee);
 

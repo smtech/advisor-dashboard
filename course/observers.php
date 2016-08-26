@@ -2,6 +2,11 @@
 
 require_once 'common.inc.php';
 
+if ($firstStudent === false) {
+    $toolbox->smarty_display('no-advisees.tpl');
+    exit;
+}
+
 $toolbox->cache_pushKey(basename(__FILE__, '.php'));
 
 $observers = $toolbox->cache_get('observers');
@@ -14,10 +19,6 @@ if ($observers === false) {
         $observers[] = $toolbox->api_get("users/{$enrollment['user']['id']}/profile");
     }
     $toolbox->cache_set('observers', $observers);
-}
-if (empty($observers)) {
-    $toolbox->smarty_display('no-observers.tpl');
-    exit;
 }
 
 $observees = $toolbox->cache_get('observees');
