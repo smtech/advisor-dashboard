@@ -15,6 +15,10 @@ if ($observers === false) {
     }
     $toolbox->cache_set('observers', $observers);
 }
+if (empty($observers)) {
+    $toolbox->smarty_display('no-observers.tpl');
+    exit;
+}
 
 $observees = $toolbox->cache_get('observees');
 if ($observees === false) {
@@ -28,11 +32,13 @@ if ($observees === false) {
 
 $passwords = [];
 foreach ($observers as $observer) {
-    $response = $toolbox->mysql_query("
+    $password = false;
+    if ($response = $toolbox->mysql_query("
         SELECT * FROM `observers` WHERE `id` = '{$observer['id']}' LIMIT 1
-    ");
-    $password = $response->fetch_assoc();
-    $passwords[$observer['id']] = $password['password'];
+    ")) {
+        $password = $response->fetch_assoc()['password'];
+    }
+    $passwords[$observer['id']] = $password;
 }
 
 $toolbox->cache_popKey();
