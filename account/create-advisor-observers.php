@@ -68,7 +68,7 @@ switch ($step) {
         foreach ($advisories as $advisory) {
             /* cache the teacher */
             $advisors = $toolbox->api_get("courses/{$advisory['id']}/users", [
-                'enrollment_role' => 'TeacherEnrollment'
+                'enrollment_type' => 'teacher'
             ]);
             if ($advisors->count()) {
                 $advisor = $advisors[0];
@@ -87,7 +87,7 @@ switch ($step) {
 
             /* look at all the student enrollments... */
             $advisees = $toolbox->api_get("courses/{$advisory['id']}/users", [
-                'enrollment_role' => 'StudentEnrollment'
+                'enrollment_type' => 'student'
             ]);
 
             foreach ($advisees as $advisee) {
