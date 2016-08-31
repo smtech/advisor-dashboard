@@ -11,14 +11,14 @@ $toolbox->cache_pushKey($_SESSION[ToolProvider::class]['canvas']['course_id']);
 /* get and cache ID of first student in the advisory group */
 $firstStudent = $toolbox->cache_get('first-student');
 if (empty($firstStudent)) {
-    $enrollments = $toolbox->api_get(
-        'courses/' . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '/enrollments',
+    $students = $toolbox->api_get(
+        'courses/' . $_SESSION[ToolProvider::class]['canvas']['course_id'] . '/users',
         [
-            'role[]' => 'StudentEnrollment'
+            'enrollment_type' => 'student'
         ]
     );
-    if ($enrollments->count() > 0) {
-        $firstStudent = $enrollments[0]['user']['id'];
+    if ($students->count() > 0) {
+        $firstStudent = $students[0]['id'];
     } else {
         $firstStudent = false;
     }

@@ -7,7 +7,7 @@
 			<div class="input-group">
 				<select name="advisee" class="form-control" onchange="$('#select-advisee-button').click();">
 					{foreach $advisees as $a}
-						<option value="{$a['user']['id']}" {if $a['user']['id'] == $advisee}selected="selected"{/if}>{$a['user']['name']}</option>
+						<option value="{$a['id']}" {if $a['id'] == $advisee}selected="selected"{/if}>{$a['name']}</option>
 					{/foreach}
 				</select>
 				<span class="input-group-btn">

@@ -8,6 +8,7 @@ if ($firstStudent === false) {
 }
 
 $toolbox->cache_pushKey(basename(__FILE__, '.php'));
+$toolbox->cache_pushKey($_SESSION[COURSE_ID]);
 
 $observers = $toolbox->cache_get('observers');
 if ($observers === false) {

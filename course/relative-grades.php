@@ -30,8 +30,8 @@ $terms = $toolbox->getTermList();
 
 $advisees = $toolbox->cache_get('advisees');
 if ($advisees === false) {
-    $advisees = $toolbox->api_get('courses/' . $_SESSION[COURSE_ID] . '/enrollments', [
-        'role[]' => 'StudentEnrollment' // FIXME this shouldn't require the faux-array
+    $advisees = $toolbox->api_get('courses/' . $_SESSION[COURSE_ID] . '/users', [
+        'enrollment_type' => 'student'
     ]);
     $toolbox->cache_set('advisees', $advisees);
 }
