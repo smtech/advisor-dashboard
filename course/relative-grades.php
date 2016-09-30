@@ -38,6 +38,7 @@ if ($advisees === false) {
 
 $advisee = (isset($_REQUEST['advisee']) ? $_REQUEST['advisee'] : $firstStudent);
 
+$toolbox->cache_popKey();
 $toolbox->cache_pushKey($advisee);
 
 $courses = $toolbox->cache_get('courses');

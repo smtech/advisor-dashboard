@@ -77,40 +77,40 @@ Chart.defaults.global.scaleBeginAtZero = true;
         labels: [<?= '"' . implode('", "', $labels) . '"' ?>],
         datasets: [
             {
-                label: "High Score",
-                fillColor: "<?= HIGH_FILL ?>",
-                strokeColor: "<?= HIGH_STROKE ?>",
-                data: [<?= implode(', ', $max_scores) ?>]
-            },
-            {
-                label: "Third Quartile",
-                fillColor: "<?= THIRD_QUARTILE_FILL ?>",
-                strokeColor: "<?= THIRD_QUARTILE_STROKE ?>",
-                data: [<?= implode(', ', $third_quartiles) ?>]
-            },
-            {
-                label: "Median",
-                fillColor: "<?= MEDIAN_FILL ?>",
-                strokeColor: "<?= MEDIAN_STROKE ?>",
-                data: [<?= implode(', ', $medians) ?>]
-            },
-            {
-                label: "First Quartile",
-                fillColor: "<?= FIRST_QUARTILE_FILL ?>",
-                strokeColor: "<?= FIRST_QUARTILE_STROKE ?>",
-                data: [<?= implode(', ', $first_quartiles) ?>]
+                label: "Score",
+                backgroundColor: "<?= SCORE_FILL ?>",
+                borderColor: "<?= SCORE_STROKE ?>",
+                data: [<?= implode(', ', $scores) ?>]
             },
             {
                 label: "Low Score",
-                fillColor: "<?= LOW_FILL ?>",
-                strokeColor: "<?= LOW_STROKE ?>",
+                backgroundColor: "<?= LOW_FILL ?>",
+                borderColor: "<?= LOW_STROKE ?>",
                 data: [<?= implode(', ', $min_scores) ?>]
             },
             {
-                label: "Score",
-                fillColor: "<?= SCORE_FILL ?>",
-                strokeColor: "<?= SCORE_STROKE ?>",
-                data: [<?= implode(', ', $scores) ?>]
+                label: "First Quartile",
+                backgroundColor: "<?= FIRST_QUARTILE_FILL ?>",
+                borderColor: "<?= FIRST_QUARTILE_STROKE ?>",
+                data: [<?= implode(', ', $first_quartiles) ?>]
+            },
+            {
+                label: "Median",
+                backgroundColor: "<?= MEDIAN_FILL ?>",
+                borderColor: "<?= MEDIAN_STROKE ?>",
+                data: [<?= implode(', ', $medians) ?>]
+            },
+            {
+                label: "Third Quartile",
+                backgroundColor: "<?= THIRD_QUARTILE_FILL ?>",
+                borderColor: "<?= THIRD_QUARTILE_STROKE ?>",
+                data: [<?= implode(', ', $third_quartiles) ?>]
+            },
+            {
+                label: "High Score",
+                backgroundColor: "<?= HIGH_FILL ?>",
+                borderColor: "<?= HIGH_STROKE ?>",
+                data: [<?= implode(', ', $max_scores) ?>]
             }
         ]
     };
@@ -126,6 +126,10 @@ Chart.defaults.global.scaleBeginAtZero = true;
     // TODO detect empty datasets and remove canvas and replace with message
 
     // This will get the first returned node in the jQuery collection.
-    var chart = new Chart(ctx).Line(data, options);
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
 
 <?php endforeach; ?>

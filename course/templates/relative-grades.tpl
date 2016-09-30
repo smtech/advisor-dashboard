@@ -28,6 +28,6 @@
 {/block}
 
 {block name="post-bootstrap-scripts" append}
-	<script src="../js/Chart.min.js"></script>
+	<script src="../vendor/npm-asset/chart.js/dist/Chart.min.js"></script>
 	<script src="../js/relative-grades.js.php?advisee={$advisee}"></script>
 {/block}
