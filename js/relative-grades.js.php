@@ -57,7 +57,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
     $scores = array();
     foreach ($analytic as $data) {
         if ($data['points_possible'] > 0 && $data['max_score'] > 0) {
-            $labels[] = htmlentities($data['title']);
+            $labels[] = addslashes($data['title']);
             $max_scores[] = normalize($data['max_score'], $data['points_possible']);
             $min_scores[] = normalize($data['min_score']);
             $medians[] = normalize($data['median']);
@@ -86,30 +86,45 @@ Chart.defaults.global.scaleBeginAtZero = true;
                 label: "Low Score",
                 backgroundColor: "<?= LOW_FILL ?>",
                 borderColor: "<?= LOW_STROKE ?>",
+                borderWidth: 1,
+                radius: 0,
+                tooltips: {enabled: false},
                 data: [<?= implode(', ', $min_scores) ?>]
             },
             {
                 label: "First Quartile",
                 backgroundColor: "<?= FIRST_QUARTILE_FILL ?>",
                 borderColor: "<?= FIRST_QUARTILE_STROKE ?>",
+                borderWidth: 0,
+                radius: 0,
+                tooltips: {enabled: false},
                 data: [<?= implode(', ', $first_quartiles) ?>]
             },
             {
                 label: "Median",
                 backgroundColor: "<?= MEDIAN_FILL ?>",
                 borderColor: "<?= MEDIAN_STROKE ?>",
+                borderWidth: 1,
+                radius: 0,
+                tooltips: {enabled: false},
                 data: [<?= implode(', ', $medians) ?>]
             },
             {
                 label: "Third Quartile",
                 backgroundColor: "<?= THIRD_QUARTILE_FILL ?>",
                 borderColor: "<?= THIRD_QUARTILE_STROKE ?>",
+                borderWidth: 0,
+                radius: 0,
+                tooltips: {enabled: false},
                 data: [<?= implode(', ', $third_quartiles) ?>]
             },
             {
                 label: "High Score",
                 backgroundColor: "<?= HIGH_FILL ?>",
                 borderColor: "<?= HIGH_STROKE ?>",
+                borderWidth: 1,
+                radius: 0,
+                tooltips: {enabled: false},
                 data: [<?= implode(', ', $max_scores) ?>]
             }
         ]

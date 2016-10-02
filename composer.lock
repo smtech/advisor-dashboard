@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10389e5e567ec7e88572d6ad23610b2b",
+    "hash": "f9d5a51a1f84dbcab7b84d1a674565c4",
     "content-hash": "79bb2f29f28e17525b0668a03d1a63c9",
     "packages": [
         {
@@ -119,16 +119,16 @@
         },
         {
             "name": "battis/data-utilities",
-            "version": "v0.1",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/battis/data-utilities.git",
-                "reference": "9efc9d29ad23d8a3a4d0803408eefbc7f681b012"
+                "reference": "da441f33ea687283cc741e47c4b3dfb6c85804a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/battis/data-utilities/zipball/9efc9d29ad23d8a3a4d0803408eefbc7f681b012",
-                "reference": "9efc9d29ad23d8a3a4d0803408eefbc7f681b012",
+                "url": "https://api.github.com/repos/battis/data-utilities/zipball/da441f33ea687283cc741e47c4b3dfb6c85804a1",
+                "reference": "da441f33ea687283cc741e47c4b3dfb6c85804a1",
                 "shasum": ""
             },
             "require-dev": {
@@ -151,7 +151,7 @@
                 }
             ],
             "description": "A handful of useful helper functions to process data",
-            "time": "2016-07-12 14:40:23"
+            "time": "2016-09-02 02:00:58"
         },
         {
             "name": "battis/educoder-pest-fork",
@@ -279,16 +279,16 @@
         },
         {
             "name": "bower-asset/bootstrap-colorpicker-2.x",
-            "version": "2.3.3",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mjolnic/bootstrap-colorpicker.git",
-                "reference": "59f06437c86b7c0e074aee8a699819fd1c07a173"
+                "url": "https://github.com/itsjaviaguilar/bootstrap-colorpicker.git",
+                "reference": "57f0614ac5144b506ca4a966049014de2a54f68c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mjolnic/bootstrap-colorpicker/zipball/59f06437c86b7c0e074aee8a699819fd1c07a173",
-                "reference": "59f06437c86b7c0e074aee8a699819fd1c07a173",
+                "url": "https://api.github.com/repos/itsjaviaguilar/bootstrap-colorpicker/zipball/57f0614ac5144b506ca4a966049014de2a54f68c",
+                "reference": "57f0614ac5144b506ca4a966049014de2a54f68c",
                 "shasum": ""
             },
             "require": {
@@ -381,16 +381,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "6f02bc382c0529d3b4f68f6b2ad21876642dbbfe"
+                "reference": "1b30f3ad466ebf2714d47eda34dbd7fdf6849fe3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/6f02bc382c0529d3b4f68f6b2ad21876642dbbfe",
-                "reference": "6f02bc382c0529d3b4f68f6b2ad21876642dbbfe",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/1b30f3ad466ebf2714d47eda34dbd7fdf6849fe3",
+                "reference": "1b30f3ad466ebf2714d47eda34dbd7fdf6849fe3",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -412,16 +412,16 @@
         },
         {
             "name": "bower-asset/moment",
-            "version": "2.14.1",
+            "version": "2.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moment/moment.git",
-                "reference": "227746b29044a4c2160ae7c597c7f24aacac2635"
+                "reference": "986dba9497b7c173760d1d7bc85606c574ed2c44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moment/moment/zipball/227746b29044a4c2160ae7c597c7f24aacac2635",
-                "reference": "227746b29044a4c2160ae7c597c7f24aacac2635",
+                "url": "https://api.github.com/repos/moment/moment/zipball/986dba9497b7c173760d1d7bc85606c574ed2c44",
+                "reference": "986dba9497b7c173760d1d7bc85606c574ed2c44",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -445,7 +445,10 @@
                     "package.js",
                     "package.json"
                 ]
-            }
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "fxp/composer-asset-plugin",
@@ -676,30 +679,31 @@
         },
         {
             "name": "ircmaxell/random-lib",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/RandomLib.git",
-                "reference": "13efa4368bb2ac88bb3b1459b487d907de4dbf7c"
+                "reference": "e9e0204f40e49fa4419946c677eccd3fa25b8cf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/13efa4368bb2ac88bb3b1459b487d907de4dbf7c",
-                "reference": "13efa4368bb2ac88bb3b1459b487d907de4dbf7c",
+                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/e9e0204f40e49fa4419946c677eccd3fa25b8cf4",
+                "reference": "e9e0204f40e49fa4419946c677eccd3fa25b8cf4",
                 "shasum": ""
             },
             "require": {
-                "ircmaxell/security-lib": "1.0.*@dev",
+                "ircmaxell/security-lib": "^1.1",
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "mikey179/vfsstream": "1.1.*",
-                "phpunit/phpunit": "3.7.*"
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^4.8|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -726,20 +730,20 @@
                 "random-numbers",
                 "random-strings"
             ],
-            "time": "2015-01-15 16:31:45"
+            "time": "2016-09-07 15:52:06"
         },
         {
             "name": "ircmaxell/security-lib",
-            "version": "1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/SecurityLib.git",
-                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7"
+                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/80934de3c482dcafb46b5756e59ebece082b6dc7",
-                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7",
+                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
+                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
                 "shasum": ""
             },
             "require": {
@@ -749,6 +753,11 @@
                 "mikey179/vfsstream": "1.1.*"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "SecurityLib": "lib"
@@ -766,8 +775,8 @@
                 }
             ],
             "description": "A Base Security Library",
-            "homepage": "https://github.com/ircmaxell/PHP-SecurityLib",
-            "time": "2013-04-30 18:00:34"
+            "homepage": "https://github.com/ircmaxell/SecurityLib",
+            "time": "2015-03-20 14:31:23"
         },
         {
             "name": "league/oauth2-client",
@@ -878,12 +887,12 @@
         },
         {
             "name": "npm-asset/chart.js",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/chart.js/-/chart.js-2.2.1.tgz",
+                "url": "https://registry.npmjs.org/chart.js/-/chart.js-2.3.0.tgz",
                 "reference": null,
-                "shasum": "11b1ff32a7a9c7aa9fc68fb97e3261b846b174c0"
+                "shasum": "40460e48e2c417c05fc3325cd84f7b000dc7d7d6"
             },
             "require": {
                 "npm-asset/chartjs-color": ">=2.0.0,<3.0.0",
@@ -897,22 +906,19 @@
                 "npm-asset/gulp": "dev-3.9.x|3.9.x",
                 "npm-asset/gulp-concat": "~2.1.0",
                 "npm-asset/gulp-connect": "~2.0.5",
+                "npm-asset/gulp-eslint": ">=2.0.0,<3.0.0",
+                "npm-asset/gulp-file": ">=0.3.0,<0.4.0",
                 "npm-asset/gulp-html-validator": ">=0.0.2,<0.0.3",
                 "npm-asset/gulp-insert": "~0.5.0",
-                "npm-asset/gulp-jshint": "~1.5.1",
                 "npm-asset/gulp-karma": "0.0.4",
                 "npm-asset/gulp-replace": ">=0.5.4,<0.6.0",
                 "npm-asset/gulp-size": "~0.4.0",
                 "npm-asset/gulp-streamify": ">=1.0.2,<2.0.0",
                 "npm-asset/gulp-uglify": "~0.2.0",
-                "npm-asset/gulp-umd": "~0.2.0",
                 "npm-asset/gulp-util": "~2.2.0",
                 "npm-asset/gulp-zip": "~3.2.0",
-                "npm-asset/inquirer": ">=0.5.1,<0.6.0",
                 "npm-asset/jasmine": ">=2.3.2,<3.0.0",
                 "npm-asset/jasmine-core": ">=2.3.4,<3.0.0",
-                "npm-asset/jquery": ">=2.1.4,<3.0.0",
-                "npm-asset/jshint-stylish": "~2.1.0",
                 "npm-asset/karma": ">=0.12.37,<0.13.0",
                 "npm-asset/karma-browserify": ">=5.0.1,<6.0.0",
                 "npm-asset/karma-chrome-launcher": ">=0.2.0,<0.3.0",
@@ -921,9 +927,7 @@
                 "npm-asset/karma-jasmine": ">=0.3.6,<0.4.0",
                 "npm-asset/karma-jasmine-html-reporter": ">=0.1.8,<0.2.0",
                 "npm-asset/merge-stream": ">=1.0.0,<2.0.0",
-                "npm-asset/semver": ">=3.0.1,<4.0.0",
-                "npm-asset/vinyl-source-stream": ">=1.1.0,<2.0.0",
-                "npm-asset/watchify": ">=3.7.0,<4.0.0"
+                "npm-asset/vinyl-source-stream": ">=1.1.0,<2.0.0"
             },
             "type": "npm-asset-library",
             "extra": {
@@ -1135,12 +1139,12 @@
         },
         {
             "name": "npm-asset/moment",
-            "version": "2.14.1",
+            "version": "2.15.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/moment/-/moment-2.14.1.tgz",
+                "url": "https://registry.npmjs.org/moment/-/moment-2.15.1.tgz",
                 "reference": null,
-                "shasum": "b35b27c47e57ed2ddc70053d6b07becdb291741c"
+                "shasum": "e979c2a29e22888e60f396f2220a6118f85cd94c"
             },
             "require-dev": {
                 "npm-asset/benchmark": "dev-default|*",
@@ -1172,6 +1176,7 @@
                 "npm-asset/qunit": ">=0.7.5,<0.8.0",
                 "npm-asset/qunit-cli": ">=0.1.4,<0.2.0",
                 "npm-asset/spacejam": "dev-default|*",
+                "npm-asset/typescript": ">=1.8.10,<2.0.0",
                 "npm-asset/uglify-js": "dev-default|*"
             },
             "type": "npm-asset-library",
