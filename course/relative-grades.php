@@ -23,6 +23,7 @@ function isAcademic($account)
     }
 }
 
+$toolbox->getCache()->purgeExpired();
 $toolbox->cache_pushKey(basename(__FILE__, '.php'));
 $toolbox->cache_pushKey($_SESSION[COURSE_ID]);
 
