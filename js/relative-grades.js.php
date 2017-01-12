@@ -23,6 +23,9 @@ $points = 0;
 function normalize($numerator, $denominator = false)
 {
     global $points;
+    if ($numerator === null) {
+        return null;
+    }
     $denominator = ($denominator !== false ? $denominator : $points);
     $points = $denominator;
     return min(100, $numerator / $denominator * 100);
@@ -56,7 +59,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
     $third_quartiles = array();
     $scores = array();
     foreach ($analytic as $data) {
-        if ($data['points_possible'] > 0 && $data['max_score'] > 0) {
+        // if ($data['points_possible'] > 0 && $data['max_score'] > 0) {
             $labels[] = addslashes($data['title']);
             $max_scores[] = normalize($data['max_score'], $data['points_possible']);
             $min_scores[] = normalize($data['min_score']);
@@ -68,7 +71,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
             } else {
                 $scores[] = normalize($data['submission']['score']);
             }
-        }
+        // }
     }
 
     ?>
