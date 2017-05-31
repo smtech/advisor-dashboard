@@ -66,13 +66,13 @@ switch ($step) {
             }
 
             $toolbox->smarty_assign([
-                'csv' => basename(__FILE__, '.php') . "/$account/users",
+                'csv' => $toolbox->getCache()->getHierarchicalKey("$account/users"),
                 'filename' => date('Y-m-d_H-i-s') . "_account-{$account}_observers"
             ]);
             $toolbox->smarty_addMessage(
                 'Ready for Download',
-                '<code>users.csv</code> is ready and download should start automatically " .
-                    "in a few seconds. Click the link below if the download does not start automatically.',
+                '<code>users.csv</code> is ready and download should start automatically ' .
+                'in a few seconds. Click the link below if the download does not start automatically.',
                 NotificationMessage::SUCCESS
             );
         } catch (Exception $e) {

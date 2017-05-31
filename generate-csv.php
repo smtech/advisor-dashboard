@@ -2,18 +2,21 @@
 
 require_once 'common.inc.php';
 
-// FIXME this is a gaping security hole, allowing anything in the cache to be dumped to CSV -- needs a nonce or something
+use Battis\SimpleCache;
+
+/*
+ * FIXME this is a gaping security hole, allowing anything in the cache to be
+ * dumped to CSV -- needs a nonce or something
+ */
 
 if (!empty($_REQUEST['data'])) {
-    $data = $toolbox->cache_get($_REQUEST['data']);
+    $cache = new SimpleCache($toolbox->getMySQL());
+    $data = $cache->getCache($_REQUEST['data']);
     if (is_array($data)) {
-
         $filename = (empty($_REQUEST['filename']) ? date('Y-m-d_H-i-s') : $_REQUEST['filename']);
         if (!preg_match('/.*\.csv$/i', $filename)) {
             $filename .= '.csv';
         }
-
-        /* http://code.stephenmorley.org/php/creating-downloadable-csv-files/ */
 
         /* output headers so that the file is downloaded rather than displayed */
         header('Content-Type: text/csv; charset=utf-8');
