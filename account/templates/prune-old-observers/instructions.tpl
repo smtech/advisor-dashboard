@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="readable-width">
-            <p>This script generates a users.csv file that deletes all old advisor accounts. An advisor account is any account whose SIS ID is of the form <code>*-advisor</code> and which has at least one observee. Old, for our purposes, means that all of the courses in which that advisor is enrolled have now ended.</p>
+            <p>This script generates a <code>users.csv</code> file that deletes all old advisor accounts. An advisor account is any account whose SIS ID is of the form <code>*-advisor</code> and which has at least one observee. Old, for our purposes, means that all of the courses in which that advisor is enrolled have now ended.</p>
         </div>
     </div>
 

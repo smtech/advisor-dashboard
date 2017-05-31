@@ -8,7 +8,7 @@
 
 	<div class="container">
 		<div class="readable-width">
-			<p>Download a <a target="_parent" href="https://canvas.instructure.com/doc/api/file.sis_csv.html">users.csv</a> file with an additional <code>id</code> column identifying the user's Canvas ID. </p>
+			<p>Download a <a target="_parent" href="https://canvas.instructure.com/doc/api/file.sis_csv.html">users.csv</a> file with an additional <code>id</code> column identifying the user's Canvas ID. This CSV file can be used to force a reset of observer passwords if they aren't "taking" via the API.</p>
 		</div>
 	</div>
 

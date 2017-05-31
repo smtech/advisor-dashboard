@@ -1,4 +1,5 @@
 <?php
 
-header('Location: create-advisor-observers.php');
-exit;
+require_once 'common.inc.php';
+
+$toolbox->smarty_display('home.tpl');
