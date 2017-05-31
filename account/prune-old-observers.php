@@ -16,6 +16,12 @@ switch ($step) {
         /* generate CSV for download */
         try {
             $toolbox->cache_pushKey($_REQUEST['account']);
+            $expired = [];
+            foreach ($toolbox->getTermList() as $term) {
+                if (strtotime($term['end_at']) < time()) {
+                    $expired[$term['id']] = true;
+                }
+            }
             $prune = $toolbox->cache_get('prune');
             if ($prune === false) {
                 $prune[] = [
@@ -35,7 +41,12 @@ switch ($step) {
                         $inactive = true;
                         $courses = $toolbox->api_get("users/{$advisor['id']}/courses");
                         foreach ($courses as $course) {
-                            if (!isset($course['access_restricted_by_date'])) {
+                            if (!isset($course['access_restricted_by_date']) &&
+                                (
+                                    isset($course['enrollment_term_id']) &&
+                                    !array_key_exists($course['enrollment_term_id'], $expired)
+                                )
+                            ) {
                                 $inactive = false;
                                 break;
                             }
@@ -51,6 +62,7 @@ switch ($step) {
                         }
                     }
                 }
+                $toolbox->getCache()->setLifetime(60);
                 $toolbox->cache_set('prune', $prune);
             }
 

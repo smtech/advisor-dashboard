@@ -63,6 +63,7 @@ switch ($step) {
                         ];
                     }
                 }
+                $toolbox->getCache()->setLifetime(60);
                 $toolbox->cache_set('observers', $data);
             }
 
