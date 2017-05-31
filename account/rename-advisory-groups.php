@@ -4,13 +4,13 @@ require_once('common.inc.php');
 
 use Battis\BootstrapSmarty\NotificationMessage;
 
-define('STEP_INSTRUCTIONS', 1);
-define('STEP_RENAME', 2);
+$STEP_INSTRUCTIONS = 1;
+$STEP_RENAME = 2;
 
-$step = (empty($_REQUEST['step']) ? STEP_INSTRUCTIONS : $_REQUEST['step']);
+$step = (empty($_REQUEST['step']) ? $STEP_INSTRUCTIONS : $_REQUEST['step']);
 
 switch ($step) {
-    case STEP_RENAME:
+    case $STEP_RENAME:
         try {
             $updated = 0;
             $unchanged = 0;
@@ -57,14 +57,14 @@ switch ($step) {
             NotificationMessage::SUCCESS
         );
 
-        /* fall through into STEP_INSTRUCTIONS */
+        /* fall through into $STEP_INSTRUCTIONS */
 
-    case STEP_INSTRUCTIONS:
+    case $STEP_INSTRUCTIONS:
     default:
         $toolbox->smarty_assign([
             'terms' => $toolbox->getTermList(),
             'formHidden' => [
-                'step' => STEP_RENAME,
+                'step' => $STEP_RENAME,
                 'account' => $_SESSION['accountId']
             ]
         ]);

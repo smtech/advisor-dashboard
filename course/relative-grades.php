@@ -10,19 +10,6 @@ if ($firstStudent === false) {
     exit;
 }
 
-$accounts = $toolbox->getAccountList();
-function isAcademic($account)
-{
-    global $accounts;
-    if ($account == 132) { // FIXME really, hard-coded values? Really?
-        return true;
-    } elseif ($account == 1 || !is_integer($account)) {
-        return false;
-    } else {
-        return isAcademic($accounts[$account]['parent_account_id']);
-    }
-}
-
 $toolbox->getCache()->purgeExpired();
 $toolbox->cache_pushKey(basename(__FILE__, '.php'));
 $toolbox->cache_pushKey($_SESSION[COURSE_ID]);
@@ -49,7 +36,7 @@ if ($courses === false) {
     $courses = [];
     foreach ($allCourses as $course) {
         if (!empty($course['account_id']) &&
-            isAcademic($course['account_id'])) {
+            $toolbox->isAcademic($course['account_id'])) {
             $courses[$course['id']] = $course;
         }
     }

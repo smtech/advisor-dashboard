@@ -4,24 +4,15 @@ require_once 'common.inc.php';
 
 use Battis\BootstrapSmarty\NotificationMessage;
 
-define('STEP_INSTRUCTIONS', 1);
-define('STEP_CSV', 2);
-
-function blank($row, $key)
-{
-    if (empty($row[$key])) {
-        return '';
-    } else {
-        return $row[$key];
-    }
-}
+$STEP_INSTRUCTIONS = 1;
+$STEP_CSV = 2;
 
 $toolbox->cache_pushKey(basename(__FILE__, '.php'));
 
-$step = (empty($_REQUEST['step']) ? STEP_INSTRUCTIONS : $_REQUEST['step']);
+$step = (empty($_REQUEST['step']) ? $STEP_INSTRUCTIONS : $_REQUEST['step']);
 
 switch ($step) {
-    case STEP_CSV:
+    case $STEP_CSV:
         try {
             $account = (empty($_REQUEST['account']) ? 1 : $_REQUEST['account']);
             if (empty($_REQUEST['account'])) {
@@ -59,14 +50,14 @@ switch ($step) {
                     $row = $response->fetch_assoc();
                     if ($row) {
                         $data[] = [
-                            blank($user, 'id'),
-                            blank($user, 'sis_user_id'),
-                            blank($user, 'login_id'),
-                            blank($row, 'password'),
-                            blank($user, 'name'),
-                            blank($user, 'sortable_name'),
-                            blank($user, 'short_name'),
-                            blank($user, 'email'),
+                            $toolbox->blank($user, 'id'),
+                            $toolbox->blank($user, 'sis_user_id'),
+                            $toolbox->blank($user, 'login_id'),
+                            $toolbox->blank($row, 'password'),
+                            $toolbox->blank($user, 'name'),
+                            $toolbox->blank($user, 'sortable_name'),
+                            $toolbox->blank($user, 'short_name'),
+                            $toolbox->blank($user, 'email'),
                             'active'
                         ];
                     }
@@ -88,12 +79,12 @@ switch ($step) {
             $toolbox->smarty_addMessage('Error ' . $e->getCode(), $e->getMessage(), NotificationMessage::DANGER);
         }
 
-        /* flows into STEP_INSTRUCTIONS */
+        /* flows into $STEP_INSTRUCTIONS */
 
-    case STEP_INSTRUCTIONS:
+    case $STEP_INSTRUCTIONS:
     default:
         $toolbox->smarty_assign('formHidden', [
-            'step' => STEP_CSV,
+            'step' => $STEP_CSV,
             'account' => $_SESSION[ACCOUNT_ID]
         ]);
         $toolbox->smarty_display(basename(__FILE__, '.php') . '/instructions.tpl');

@@ -3,23 +3,21 @@
 require_once 'common.inc.php';
 
 use PWGen;
+use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
 use Battis\BootstrapSmarty\NotificationMessage;
 
 /* some configuration */
-// FIXME hard-coded!
-define('ADVISORY_SUBACCOUNT', 74); // the Canvas sub-account containing our advisory groups
-
 // TODO make configurable
-define('PASSWORD_LENGTH', 10); // be reasonable
-define('PASSWORD_SECURE', false); // we actually want things people can remember
-define('PASSWORD_NUMERALS', false); // no need for numbers
-define('PASSWORD_CAPITALS', false); // let's not have confusing capital letters
-define('PASSWORD_AMBIGUOUS', false); // since we have no numbers, ambigous characters are fine
-define('PASSWORD_NO_VOWELS', false); // we'll risk generating dirty words
-define('PASSWORD_SYMBOLS', false); // no confusing symbols
+$PASSWORD_LENGTH = 10; // be reasonable
+$PASSWORD_SECURE = false; // we actually want things people can remember
+$PASSWORD_NUMERALS = false; // no need for numbers
+$PASSWORD_CAPITALS = false; // let's not have confusing capital letters
+$PASSWORD_AMBIGUOUS = false; // since we have no numbers, ambigous characters are fine
+$PASSWORD_NO_VOWELS = false; // we'll risk generating dirty words
+$PASSWORD_SYMBOLS = false; // no confusing symbols
 
-define('STEP_INSTRUCTIONS', 1);
-define('STEP_GENERATE', 2);
+$STEP_INSTRUCTIONS = 1;
+$STEP_GENERATE = 2;
 
 /* create observers table if it doesn't already exist */
 // TODO make observer table name configurable
@@ -37,19 +35,19 @@ if ($toolbox->mysql_query("SHOW TABLES LIKE 'lti_%'")->num_rows == 0) {
 $toolbox->cache_pushKey(basename(__FILE__, '.php'));
 
 $pwgen = new PWGen(
-    PASSWORD_LENGTH,
-    PASSWORD_SECURE,
-    PASSWORD_NUMERALS,
-    PASSWORD_CAPITALS,
-    PASSWORD_AMBIGUOUS,
-    PASSWORD_NO_VOWELS,
-    PASSWORD_SYMBOLS
+    $PASSWORD_LENGTH,
+    $PASSWORD_SECURE,
+    $PASSWORD_NUMERALS,
+    $PASSWORD_CAPITALS,
+    $PASSWORD_AMBIGUOUS,
+    $PASSWORD_NO_VOWELS,
+    $PASSWORD_SYMBOLS
 );
 
-$step = (empty($_REQUEST['step']) ? STEP_INSTRUCTIONS : $_REQUEST['step']);
+$step = (empty($_REQUEST['step']) ? $STEP_INSTRUCTIONS : $_REQUEST['step']);
 
 switch ($step) {
-    case STEP_GENERATE:
+    case $STEP_GENERATE:
         /*
          * TODO test for account and term
          */
@@ -157,7 +155,10 @@ switch ($step) {
 
                     /* turn off notifications */
                     $communicationChannels = $toolbox->api_get("users/{$existing['id']}/communication_channels");
-                    $notificationPreferences = $toolbox->api_get("users/{$existing['id']}/communication_channels/{$communicationChannels[0]['id']}/notification_preferences");
+                    $notificationPreferences = $toolbox->api_get(
+                        "users/{$existing['id']}/communication_channels/" .
+                        "{$communicationChannels[0]['id']}/notification_preferences"
+                    );
                     $newPrefs = [];
                     foreach ($notificationPreferences['notification_preferences'] as $pref) {
                         if (($pref['frequency'] != 'never') &&
@@ -168,7 +169,8 @@ switch ($step) {
                     if (count($newPrefs)) {
                         $newPrefs['as_user_id'] = $existing['id'];
                         $toolbox->api_put(
-                            "users/self/communication_channels/{$communicationChannels[0]['id']}/notification_preferences",
+                            "users/self/communication_channels/" .
+                            "{$communicationChannels[0]['id']}/notification_preferences",
                             $newPrefs
                         );
                     }
@@ -236,14 +238,14 @@ switch ($step) {
             NotificationMessage::SUCCESS
         );
 
-        /* flows into STEP_INSTRUCTIONS */
+        /* flows into $STEP_INSTRUCTIONS */
 
-    case STEP_INSTRUCTIONS:
+    case $STEP_INSTRUCTIONS:
     default:
         $toolbox->smarty_assign([
             'terms' => $toolbox->getTermList(),
             'formHidden' => [
-                'step' => STEP_GENERATE,
+                'step' => $STEP_GENERATE,
                 'account' => $_SESSION[ACCOUNT_ID]
             ]
         ]);

@@ -94,4 +94,37 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
 
         return $terms;
     }
+
+    /**
+     * @param array $arr
+     * @param string|integer $key
+     * @return string `$arr[$key]` if present, `''` otherwise
+     */
+    public function blank($arr, $key)
+    {
+        if (empty($arr[$key])) {
+            return '';
+        } else {
+            return $arr[$key];
+        }
+    }
+
+    /**
+     * @param integer $account Canvas account ID
+     * @return boolean `TRUE` if the account is a child of the Academics
+     *                        account, `FALSE` otherwise
+     */
+    public function isAcademic($account)
+    {
+        if ($account == 132) { // FIXME really, hard-coded values? Really?
+            return true;
+        } elseif ($account == 1 || !is_integer($account)) {
+            return false;
+        } else {
+            if (empty($this->accounts)) {
+                $this->accounts = $this->getAccountList();
+            }
+            return isAcademic($this->accounts[$account]['parent_account_id']);
+        }
+    }
 }
