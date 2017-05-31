@@ -16,6 +16,11 @@ use Battis\HierarchicalSimpleCache;
  */
 class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
 {
+    /**
+     * Store a listing of Canvas accounts for quick access
+     * @var \smtech\CanvasPest\CanvasObject[]
+     */
+    private $accounts;
 
     /**
      * Configure course and account navigation placements

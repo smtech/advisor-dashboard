@@ -2,7 +2,6 @@
 
 require_once 'common.inc.php';
 
-use PWGen;
 use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
 use Battis\BootstrapSmarty\NotificationMessage;
 

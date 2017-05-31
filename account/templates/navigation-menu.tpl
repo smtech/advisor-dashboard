@@ -8,6 +8,7 @@
 			<li><a href="create-advisor-observers.php">Create Advisor-Observers</a></li>
 			<li><a href="rename-advisory-groups.php">Rename Advisory Groups</a></li>
 			<li><a href="download-observers-csv.php">Download Observers CSV</a></li>
+            <li><a href="prune-old-observers.php">Prune Old Observers</a></li>
 		</ul>
 	</li>
 </ul>

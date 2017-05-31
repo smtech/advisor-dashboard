@@ -15,6 +15,7 @@ switch ($step) {
     case $STEP_CSV:
         try {
             $account = (empty($_REQUEST['account']) ? 1 : $_REQUEST['account']);
+            $toolbox->cache_pushKey($account);
             if (empty($_REQUEST['account'])) {
                 $toolbox->smarty_addMessage(
                     'No Account',
@@ -23,7 +24,7 @@ switch ($step) {
                 );
             }
 
-            $data = $toolbox->cache_get("$account/users");
+            $data = $toolbox->cache_get('observers');
             if ($data === false) {
                 $users = $toolbox->api_get("accounts/$account/users", [
                     'search_term' => '-advisor'
@@ -62,19 +63,24 @@ switch ($step) {
                         ];
                     }
                 }
-                $toolbox->cache_set("$account/users", $data);
+                $toolbox->cache_set('observers', $data);
             }
 
+            $csv = urlencode($toolbox->getCache()->getHierarchicalKey('observers', $data));
+            $filename = urlencode(date('Y-m-d_H-i-s') . "_account-{$_REQUEST['account']}_observers");
             $toolbox->smarty_assign([
-                'csv' => $toolbox->getCache()->getHierarchicalKey("$account/users"),
-                'filename' => date('Y-m-d_H-i-s') . "_account-{$account}_observers"
+                'csv' => $csv,
+                'filename' => $filename
             ]);
             $toolbox->smarty_addMessage(
                 'Ready for Download',
-                '<code>users.csv</code> is ready and download should start automatically ' .
-                'in a few seconds. Click the link below if the download does not start automatically.',
+                "<a href=\"../generate-csv.php?data=$csv&" .
+                "filename=$filename\">$filename</a> is ready and download " .
+                'should start automatically in a few seconds. Click the link ' .
+                'if the download does not start automatically.',
                 NotificationMessage::SUCCESS
             );
+            $toolbox->cache_popKey();
         } catch (Exception $e) {
             $toolbox->smarty_addMessage('Error ' . $e->getCode(), $e->getMessage(), NotificationMessage::DANGER);
         }
