@@ -28,7 +28,7 @@ function normalize($numerator, $denominator = false)
     }
     $denominator = ($denominator !== false ? $denominator : $points);
     $points = $denominator;
-    return min(100, $numerator / $denominator * 100);
+    return ($denominator > 0 ? min(100, $numerator / $denominator * 100) : 100);
 }
 
 header('Content-Type: application/javascript');

@@ -129,7 +129,7 @@ class Toolbox extends \smtech\StMarksReflexiveCanvasLTI\Toolbox
             if (empty($this->accounts)) {
                 $this->accounts = $this->getAccountList();
             }
-            return isAcademic($this->accounts[$account]['parent_account_id']);
+            return $this->isAcademic($this->accounts[$account]['parent_account_id']);
         }
     }
 }
