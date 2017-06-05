@@ -1578,16 +1578,16 @@
         },
         {
             "name": "smtech/reflexive-canvas-lti",
-            "version": "v1.0.7",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smtech/reflexive-canvas-lti.git",
-                "reference": "4608b7a92d23bef5bae7396b2cd6dce6089cee0d"
+                "reference": "8c41d97160785c00a98f80ac00cc05172a758534"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/4608b7a92d23bef5bae7396b2cd6dce6089cee0d",
-                "reference": "4608b7a92d23bef5bae7396b2cd6dce6089cee0d",
+                "url": "https://api.github.com/repos/smtech/reflexive-canvas-lti/zipball/8c41d97160785c00a98f80ac00cc05172a758534",
+                "reference": "8c41d97160785c00a98f80ac00cc05172a758534",
                 "shasum": ""
             },
             "require": {
@@ -1618,7 +1618,7 @@
                 }
             ],
             "description": "LTI tool provider class that includes the \"reflexive\" reach back into Canvas via the API",
-            "time": "2017-05-31T16:02:03+00:00"
+            "time": "2017-06-05T13:28:46+00:00"
         },
         {
             "name": "smtech/stmarks-colors",
