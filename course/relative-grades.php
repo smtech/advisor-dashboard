@@ -4,6 +4,7 @@ require_once 'common.inc.php';
 
 use smtech\ReflexiveCanvasLTI\LTI\ToolProvider;
 use Battis\DataUtilities;
+use Battis\Educoder\Pest_NotFound;
 
 if ($firstStudent === false) {
     $toolbox->smarty_display('no-advisees.tpl');
@@ -47,7 +48,19 @@ $analytics = $toolbox->cache_get('analytics');
 if ($analytics === false) {
     $analytics = [];
     foreach ($courses as $course) {
-        $analytics[$course['id']] = $toolbox->api_get("courses/{$course['id']}/analytics/users/$advisee/assignments");
+        try {
+            $analytics[$course['id']] = $toolbox->api_get(
+                "courses/{$course['id']}/analytics/users/$advisee/assignments"
+            );
+        } catch (Pest_NotFound $e) {
+            $toolbox->smarty_addMessage(
+                "Analytics unavailable for {$course[name]}",
+                "Canvas is unable to provide analytics data for assignments and grades in " .
+                "<a href=\"" . $_SESSION[CANVAS_INSTANCE_URL] . "/courses/{$course['id']}\">{$course['name']}.</a> " .
+                "This is is likely because either no assignments have been " .
+                "posted or the course itself has not yet been published."
+            );
+        }
     }
     $toolbox->cache_set('analytics', $analytics);
 }
